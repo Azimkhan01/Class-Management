@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/CascadingStyle/staffOperation.css" />
+    <link rel="stylesheet" href="/public/CascadingStyle/staffNavbar.css" />
+</head>
+
+<body>
+    {{>staffNavbar}}
+    <div class="container">
+        <div class="staffHandler">
+            <div>
+                <p>Add Staff</p>
+            </div>
+            <div>
+                <button id="addStaff">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="staffAddingForm" id="staffAddingForm">
+            <form id="handleStaffDetails">
+                <input type="text" id="username" name="username" placeholder="Staff Username" required>
+                <input type="email" id="email" name="email" placeholder="Staff Email" required>
+                <input type="password" id="confirmPassword"  placeholder="Confirm Password" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <button id="handleStaffDetails" type="submit">Submit</button><br>
+                <button id="showPassword" value="show Password">Show Password</button>
+            </form>
+        </div>
+    </div>
+    {{!-- error handling div not of any use at start becauise it not visible --}}
+    <div id="error">
+<div class="info">
+    <div class="info__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z"></path></svg>
+    </div>
+    <div id="error-message" class="info__title">lorem ipsum dolor sit amet</div>
+    <div id="remove-error" class="info__close"><svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z" fill="#393a37"></path></svg></div>
+</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js"
+        integrity="sha512-TjMd9u2haGIV8ZYBQDPyGJfei5Gc2U7iw1lnCu1Z2DHlTcirZ8c6nEvSixFDc3rRNQfSptbS7rF1m7bLf8wxbg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/Script/staffOperation.js"></script>
+    <script src="/public/Script/staffNavbar.js"></script>
+</body>
+
+</html>

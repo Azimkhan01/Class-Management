@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/CascadingStyle/login.css" />
+</head>
+<body>
+    <!-- Page Heading -->
+    <header>
+        <h1>Student Management</h1>
+    </header>
+
+    <!-- Toggle Buttons for Student and Staff Login -->
+    <div class="login-buttons">
+        <button id="studentBtn">Student Login</button>
+        <button id="staffBtn">Staff Login</button>
+    </div>
+
+    <!-- Student Login Form -->
+    <div id="studentLogin" class="login-form">
+        <h2>Student Login</h2>
+        <form action="student-login" method="post">
+            <label for="studentEmail">Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+            <label for="studentPassword">Password:</label>
+            <input type="password" id="studentPassword" name="studentPassword" required>
+            <input type="checkbox" id="showStudentPassword"> Show Password <br>
+            <p style="color: red;">{{status}}</p><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Staff Login Form -->
+    <div id="staffLogin" class="login-form" style="display: none;">
+        <h2>Staff Login</h2>
+        <form action="staff-login" method="post">
+            <label for="staffEmail">Email:</label>
+            <input type="email" id="staffEmail" name="staffEmail" required>
+            <label for="staffPassword">Password:</label>
+            <input type="password" id="staffPassword" name="staffPassword" required>
+            <input type="checkbox" id="showStaffPassword"> Show Password
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="/public/Script/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* basic font */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: bold;
+    font-family: inter,sans-serif;
+  }
+  
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem); /* Mobile: 1.5rem, Laptop: max 3rem */
+  }
+  
+  h2 {
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.125rem, 3vw, 2rem);
+  }
+  
+  h4 {
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
+  }
+  
+  h5 {
+    font-size: clamp(0.875rem, 2vw, 1.5rem);
+  }
+  
+  h6 {
+    font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+  
+  p {
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adjust for readability */
+    line-height: 1.5;
+    color: #555;
+    font-family: Heebo,sans-serif;
+  }
+  
+  a {
+    font-family: heebo,sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+
+  
+/* basic font end */
+
+nav{
+    z-index: 1000;
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+nav h4{
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    -webkit-background-clip: text; /* Applies gradient to text */
+    background-clip: text; /* Standard support */
+    color: transparent;
+}
+
+.navigation{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;    
+}
+
+.navigation li{
+    list-style-type: none;
+}
+
+.navigation a:hover{
+    transition: all 0.3s ease-in-out;
+    text-decoration: underline;
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+
+#menuToggle{
+    display: none;
+}
+
+
+  
+ /* From Uiverse.io by vk-uiux */ 
+#checkbox {
+    display: none;
+  }
+  
+  .toggle {
+    position: relative;
+    width: 40px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    height: calc(4px * 3 + 11px * 2);
+  }
+  
+  .bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: calc(4px / 2);
+    background: #7b52b9;
+    color: inherit;
+    opacity: 1;
+    transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+  }
+  
+  /***** Tornado Animation *****/
+  
+  .bar--top {
+    bottom: calc(50% + 11px + 4px/ 2);
+    transition-property: bottom,transform;
+    transition-delay: calc(0s + 0.35s) * .6;
+  }
+  
+  .bar--middle {
+    top: calc(50% - 4px/ 2);
+    transition-property: opacity,transform;
+    transition-delay: calc(0s + 0.35s * .3);
+  }
+  
+  .bar--bottom {
+    top: calc(50% + 11px + 4px/ 2);
+    transition-property: top,transform;
+    transition-delay: 0s;
+  }
+  
+  #checkbox:checked + .toggle .bar--top {
+    transform: rotate(-135deg);
+    transition-delay: 0s;
+    bottom: calc(50% - 4px/ 2);
+  }
+  
+  #checkbox:checked + .toggle .bar--middle {
+    opacity: 0;
+    transform: rotate(-135deg);
+    transition-delay: calc(0s + 0.35s * .3);
+  }
+  
+  #checkbox:checked + .toggle .bar--bottom {
+    top: calc(50% - 4px/ 2);
+    transform: rotate(-225deg);
+    transition-delay: calc(0s + 0.35s * .6);
+  }
+
+  @media (max-width: 767px) {
+
+    nav{
+        flex-direction: column;
+    }
+
+    nav h4{
+        font-size: 20px;
+    }
+
+    nav a{
+        font-size: 18px;
+    }
+
+    .logo{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .navigation{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #menuToggle{
+        padding: 5px;
+        font-size: 25px;
+        display: flex;
+    }
+    .navigation{
+        gap: 25px;
+        color: blue;
+        display: none;
+    }
+
+  }
