@@ -1,5 +1,5 @@
 {
-  "name": "Class-Management",
+  "name": "class-management",
   "version": "1.0.0",
   "description": "This is the class management application where  the relation between the student and staff is used and arrange in a manager so the traking of every aspect is good",
   "main": "app.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Azimkhan01/Class-Management.git"
+    "url": "git+https://github.com/Azimkhan01/class-management.git"
   },
   "author": "Azimuddeen Mojebur Rahman Khan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Azimkhan01/Class-Management/issues"
+    "url": "https://github.com/Azimkhan01/class-management/issues"
   },
-  "homepage": "https://github.com/Azimkhan01/Class-Management#readme",
+  "homepage": "https://github.com/Azimkhan01/class-management#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
