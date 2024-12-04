@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const colors = require("colors");
 const { staffSchema } = require("../DatabaseSchema/staffSchema");
 const { batchSchema } = require("../DatabaseSchema/batchSchema");
+const { studentSchema } = require("../DatabaseSchema/studentSchema");
 mongoose
   .connect("mongodb://localhost:27017/Student-Management")
   .then(async () => {
@@ -17,5 +18,6 @@ mongoose
 
   const staff = new mongoose.model("staff",staffSchema);
   const batch = new mongoose.model('batch',batchSchema);
+  const student = new mongoose.model('student',studentSchema);
 
-module.exports = {staff , batch};
+module.exports = {staff , batch , student};

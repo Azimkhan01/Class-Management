@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require('multer')
 const router = express.Router();
 const fs = require("fs");
 let {  } = require("../Database/db");
@@ -12,6 +13,15 @@ const { studentOperationStaff } = require("../Controllers/studentOperation");
 const { addBatch } = require("../Controllers/addBatch");
 const { getBatches } = require("../Controllers/getBatches");
 const { deleteBatch } = require("../Controllers/deleteBatch");
+const { studentForm } = require("../Controllers/studentForm");
+const {studentImage} = require('../Controllers/studentImageListing')
+
+// Images
+
+const uploadStudentImage =  multer({ 
+    storage: studentImage
+  });
+
 //error
 // router.route("*").get(error);
 
@@ -27,4 +37,6 @@ router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);
 router.route("/staff-login").post(staffLogin);
 router.route("/addBatch").post(addBatch);
+router.route("/studentForm")
+  .post(uploadStudentImage.single("studentImage"), studentForm);
 module.exports = { router };

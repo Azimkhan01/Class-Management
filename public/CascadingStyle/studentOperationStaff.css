@@ -173,8 +173,56 @@ button:hover {
   gap: 5px;
 }
 
-@media (max-width: 768px) {
+/* Basic select styling */
+.form-group select {
+  width: 100%;
+  padding: 10px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  color: #555;
+  transition: all 0.3s ease;
+  appearance: none; /* Hides the native dropdown arrow */
+  /* background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
 
+.form-group select:focus {
+  border-color: #007BFF;
+  outline: none;
+  background-color: #f1faff;
+}
+
+.form-group select option {
+  color: #333;
+  background-color: #fff;
+}
+
+/* Disabled option styling */
+.form-group select option:disabled {
+  color: #888;
+  background-color: #f9f9f9;
+}
+
+/* Hover effect for dropdown */
+.form-group select:hover {
+  cursor: pointer;
+}
+
+#studentForm{
+  display: none;
+  padding: 2.5px;
+  border: 1px solid #0056b3;
+}
+
+@media (max-width: 768px) {
+.container{
+  margin-top: 12%;
+}
   #TotalBatches{
     flex-direction: column;
   }
