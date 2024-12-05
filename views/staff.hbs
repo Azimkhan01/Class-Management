@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/public/CascadingStyle/staff.css" />
     <link rel="stylesheet" href="/public/CascadingStyle/staffNavbar.css" />
 </head>
+
 <body>
     {{>staffNavbar}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js" integrity="sha512-TjMd9u2haGIV8ZYBQDPyGJfei5Gc2U7iw1lnCu1Z2DHlTcirZ8c6nEvSixFDc3rRNQfSptbS7rF1m7bLf8wxbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="container1">
+        <div class="staffHandler">
+            <div>
+                <p>Search</p>
+            </div>
+            <div>
+                <button id="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+   <div id="searchInput">
+  <div class="studentFilter" ><input id="findStudent" type="text" placeholder="Search by ..."><p id="searchTotal">Total</p></div>
+</div>
+<div id="searchResults">
+
+</div>
+
+    <div id="container" class="container">
+
+    </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js"
+        integrity="sha512-TjMd9u2haGIV8ZYBQDPyGJfei5Gc2U7iw1lnCu1Z2DHlTcirZ8c6nEvSixFDc3rRNQfSptbS7rF1m7bLf8wxbg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/public/Script/staff.js"></script>
     <script src="/public/Script/staffNavbar.js"></script>
 </body>
+
 </html>

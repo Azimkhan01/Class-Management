@@ -43,12 +43,14 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" id="studentClass" name="studentClass" placeholder="Student Class" required>
+                <select  id="studentClass" name="studentClass" required>
+                     {{!-- <option value disabled selected>Select Class</option> --}}
+                </select>
             </div>
             <div class="form-group">
                 {{!-- <label for="batch">Batch</label> --}}
                 <select id="batch" name="batchName" required>
-                    <option value disabled selected>Select Batch</option>
+                    {{!-- <option value disabled selected>Select Batch</option> --}}
                     {{!-- <option value="batch1">Batch 1</option>
                     <option value="batch2">Batch 2</option>
                     <option value="batch3">Batch 3</option> --}}

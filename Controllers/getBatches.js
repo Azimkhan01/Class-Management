@@ -11,6 +11,7 @@ const getBatches = async (req, res) => {
     let cachedBatches = cache.get("batch");
 
     if (cachedBatches) {
+        // console.log('running cache')
         return res.json(cachedBatches);
     }
 

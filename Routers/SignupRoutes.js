@@ -14,7 +14,8 @@ const { addBatch } = require("../Controllers/addBatch");
 const { getBatches } = require("../Controllers/getBatches");
 const { deleteBatch } = require("../Controllers/deleteBatch");
 const { studentForm } = require("../Controllers/studentForm");
-const {studentImage} = require('../Controllers/studentImageListing')
+const {studentImage} = require('../Controllers/studentImageListing');
+const {getStudents} = require("../Controllers/getStudents")
 
 // Images
 
@@ -32,6 +33,7 @@ router.route("/staffOperation").get(staffOperation);
 router.route("/studentOperationStaff").get(studentOperationStaff);
 router.route("/getBatches").get(getBatches);
 router.route("/deleteBatch/:id").get(deleteBatch);
+router.route("/getStudents").get(getStudents)
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);

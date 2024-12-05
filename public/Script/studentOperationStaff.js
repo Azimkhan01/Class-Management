@@ -173,13 +173,17 @@ async function loadBatches() {
           </div>`;
       });
       TotalBatches.innerHTML = s; // Add the constructed HTML to the TotalBatches element
-       let option = `   <option value="" disabled selected>Select Batch</option>`
+       let option = `<option value="" disabled selected>Select Batch</option>`
+        let option2 = `<option value="" disabled selected>Select Class</option>`
+       const studentClass = document.getElementById("studentClass")
       batches.forEach((element)=>{
-       
         option += `<option value="${element.batchName}">${element.batchName}</option>`
-
+        option2 +=`<option value="${element.batchStandard}">${element.batchStandard}</option>`
       });
       batch.innerHTML = option
+      studentClass.innerHTML = option2
+      
+     
     } else {
       TotalBatches.innerHTML = "<p>No batches found</p>"; // Display a message if no batches are found
     }
