@@ -6,8 +6,8 @@ const studentForm = async(req, res) => {
     const {studentName,studentAge,gender,studentClass,batchName,previousGrade,parentWhatsapp,parentEmail,studentWhatsapp} = req.body
     const studentId = async()=>{
      let count = await student.countDocuments({ batch: batchName });
-     let batchData = await batch.find({batchName:batchName})
-    //  console.log(batchData)
+     let batchData = await batch.find({batchName:batchName});
+     console.log(batchData[0].batchStandard)
      let standard = batchData[0].batchStandard
      let year = batchData[0].batchYear
     //  console.log('the year',year)
@@ -19,6 +19,7 @@ const studentForm = async(req, res) => {
          studentWhatsapp:studentWhatsapp,   
          parentWhatsapp:parentWhatsapp,
          email:parentEmail,
+         previousGrade:previousGrade,
          gender:gender,
          class:studentClass,
          age:studentAge,

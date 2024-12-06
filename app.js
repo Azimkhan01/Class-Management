@@ -1,4 +1,5 @@
 const express = require("express");
+const {batch,student} = require('./Database/db')
 const path = require("path");
 const colors = require("colors");
 const hbs = require("hbs");
@@ -15,6 +16,32 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 hbs.registerPartials(partialsPath);
 app.use("/", router);
+
+// await student.updateMany(
+//   { studentid: { $in: presentStudents } },
+//   { $addToSet: { present: currentDate } } // Prevent duplicate dates
+// );
+
+// await student.updateMany(
+//   { studentid: { $in: absentStudents } },
+//   { $addToSet: { absent: currentDate } } // Prevent duplicate dates
+// );
+
+// // Record attendance in the batch
+// const attendanceRecord = {
+//   date: new Date('2025-01-06T10:45:47.876+00:00'),
+//   present: [24120],
+//   absent: [24121],
+// };
+
+// await batch.updateOne(
+//   { batchName, batchStandard },
+//   {
+//       $push: { attendance: attendanceRecord },
+//       $inc: { totalDays: 1 },
+//   }
+// );
+
 const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(
