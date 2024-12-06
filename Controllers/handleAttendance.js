@@ -1,11 +1,6 @@
 const { student, batch } = require('../Database/db');
 
-function formatDate(date) {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = String(date.getFullYear()).slice(2);
-    return `${day}/${month}/${year}`;
-}
+
 
 const handleAttendance = async (req, res) => {
     if (req.cookies.staff) {
@@ -13,35 +8,49 @@ const handleAttendance = async (req, res) => {
             const { batchName, batchStandard, presentStudents, absentStudents } = req.body;
             console.table(req.body);
 
-            const currentDate = formatDate(new Date());
+            const currentDate = new Date();
 
-            let addPresent = await student.updateMany(
+            // Check if attendance is already recorded for the batch on the current date
+            const batchAttendanceExists = await batch.findOne({
+                batchName,
+                batchStandard,
+                'attendance.date': currentDate,
+            });
+
+            if (batchAttendanceExists) {
+                console.log("already taken")
+                return res.json({ status: "ok", message: "Attendance for today is already recorded." });
+            }
+
+            // Update student attendance
+            await student.updateMany(
                 { studentid: { $in: presentStudents } },
-                { $push: { present: currentDate } }
+                { $addToSet: { present: currentDate } } // Prevent duplicate dates
             );
 
-            let addAbsent = await student.updateMany(
+            await student.updateMany(
                 { studentid: { $in: absentStudents } },
-                { $push: { absent: currentDate } }
+                { $addToSet: { absent: currentDate } } // Prevent duplicate dates
             );
 
+            // Record attendance in the batch
             const attendanceRecord = {
                 date: currentDate,
                 present: presentStudents,
-                absent: absentStudents
+                absent: absentStudents,
             };
 
-            let addPresentAbsent = await batch.updateMany(
-                { batchName: batchName, batchStandard: batchStandard },
+            await batch.updateOne(
+                { batchName, batchStandard },
                 {
-                    $push: { attendance: attendanceRecord }, 
-                    $inc: { totalDays: 1 } 
+                    $push: { attendance: attendanceRecord },
+                    $inc: { totalDays: 1 },
                 }
             );
 
             res.json({ status: "ok", message: "Attendance updated successfully" });
         } catch (error) {
-            console.error('Error updating attendance:', error);
+            console.error('Error updating attendance:', error.message);
             res.status(500).json({ error: "Failed to update attendance, please try again." });
         }
     } else {

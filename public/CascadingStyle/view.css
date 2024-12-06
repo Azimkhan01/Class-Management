@@ -1,0 +1,111 @@
+
+
+.container{
+    font-family: heebo,sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.card {
+    /* padding: 10px; */
+    background-color: #0071EA;
+    color: #ffffff;
+    width: 100%;
+    /* max-width: 600px; */
+    border-radius: 10px;
+    /* overflow: hidden; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* margin: 20px; */
+}
+
+.card-image {
+    text-align: center;
+    padding: 20px;
+    background-color: #005bb5;
+}
+
+.card-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.card-info p strong {
+    font-weight: bold;
+}
+
+#attendance {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.month {
+    border: 1px solid #0071EA;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    width: 120px;
+    max-width: 100%; /* Ensure responsiveness */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center text inside */
+}
+
+.month h3 {
+    text-align: center;
+    color: #0071EA;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.day {
+    display: inline-block;
+    width: 25px; /* Increased for better visibility */
+    height: 25px;
+    margin: 3px; /* Adjusted for spacing */
+    text-align: center;
+    line-height: 25px; /* Matches height for proper centering */
+    background-color: #0071EA;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #005bb5;
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    transition: all 0.2s ease-in-out;
+}
+
+
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .card-info p {
+        font-size: 14px;
+    }
+
+    .card-image img {
+        width: 80px;
+        height: 80px;
+    }
+}

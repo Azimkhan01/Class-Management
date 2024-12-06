@@ -47,6 +47,7 @@ findStudent.addEventListener('input', async (e) => {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Student ID</th>
+                <th>Batch</th>
                 <th>Gender</th>
                 <th>Age</th>
                 <th>Actions</th>
@@ -61,10 +62,11 @@ findStudent.addEventListener('input', async (e) => {
               <td><img src="${window.location.origin}/public/Assets/Student_Images/${student.image || 'default-image.jpg'}" alt="${student.name}" width="50" height="50"></td>
               <td>${student.name}</td>
               <td>${student.studentid}</td>
+              <td>${student.batch}</td>
               <td>${student.gender}</td>
               <td>${student.age}</td>
               <td>
-                <button class="actionButton">View</button>
+                <button onClick="handleView('${student["_id"]}')" class="actionButton">View</button>
               </td>
             </tr>`;
         });
@@ -166,7 +168,7 @@ async function fetchData() {
                       <td>${student.gender}</td>
                       <td>${student.age}</td>
                       <td>
-                        <button class="actionButton">View</button>
+                        <button onClick="handleView('${student["_id"]}')" class="actionButton">View</button>
                       </td>
                     </tr>`;
                 });
@@ -194,3 +196,9 @@ async function fetchData() {
 }
 
 fetchData();
+
+// handleView
+
+async function handleView(id) {
+  window.open(`${window.location.origin}/view/${id}`, '_blank');
+} 

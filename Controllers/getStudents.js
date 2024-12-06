@@ -6,10 +6,10 @@ const getStudents = async(req,res)=>{
     {
         if(!isEmpty(req.query))
         {
-            // console.log(req.query)
+            console.log(req.query)
             // console.log("query called ..")
             const data = await student.find({...req.query}); //if the req
-            console.log(data)
+            // console.log(data)
             res.json(data)
         }else{
             // console.log("without query called ..")

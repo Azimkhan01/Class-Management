@@ -29,8 +29,7 @@ const studentSchema = new mongoose.Schema(
     },batch:{
         type: String
     },studentid:{
-        type: String,
-        unique:true
+        type: String
     },previousGrade:{
         type: String
     },present:{

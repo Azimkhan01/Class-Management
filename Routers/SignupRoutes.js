@@ -18,6 +18,7 @@ const {studentImage} = require('../Controllers/studentImageListing');
 const {getStudents} = require("../Controllers/getStudents");
 const { attendance } = require("../Controllers/attendance");
 const { handleAttendance } = require("../Controllers/handleAttendance");
+const { view } = require("../Controllers/view");
 
 // Images
 
@@ -37,6 +38,7 @@ router.route("/getBatches").get(getBatches);
 router.route("/deleteBatch/:id").get(deleteBatch);
 router.route("/getStudents").get(getStudents);
 router.route('/attendance').get(attendance);
+router.route("/view/:id").get(view);
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);

@@ -79,7 +79,7 @@ async function handleBatch(batchName, batchStandard) {
         // Add a submit button after generating the table rows
         
         attendanceTable.innerHTML += `
-            <button onClick="submitAttendance('${batchName}', '${batchStandard}')" class="submit">Submit</button>
+            <button onClick="submitAttendance('${batchName}', '${batchStandard}')" class="submit">Submit</button><div id="pat"></div>
         `;
 
     } catch (error) {
@@ -107,7 +107,8 @@ function markAttendance(studentId, status) {
             present.splice(index, 1);
         }
     }
-
+const pat = document.getElementById('pat')
+pat.innerHTML = `<strong>Present:${present.length} + absent:${absent.length} = Total:${present.length + absent.length}</strong>`
     // console.log('Present:', present);
     // console.log('Absent:', absent);
 }
@@ -121,28 +122,28 @@ function submitAttendance(batchName, batchStandard) {
 }
 
 
-function markAttendance(studentId, status) {
-    if (status === 'present') {
-        if (!present.includes(studentId)) {
-            present.push(studentId);
-        }
-        const index = absent.indexOf(studentId);
-        if (index !== -1) {
-            absent.splice(index, 1);
-        }
-    } else if (status === 'absent') {
-        if (!absent.includes(studentId)) {
-            absent.push(studentId);
-        }
-        const index = present.indexOf(studentId);
-        if (index !== -1) {
-            present.splice(index, 1);
-        }
-    }
+// function markAttendance(studentId, status) {
+//     if (status === 'present') {
+//         if (!present.includes(studentId)) {
+//             present.push(studentId);
+//         }
+//         const index = absent.indexOf(studentId);
+//         if (index !== -1) {
+//             absent.splice(index, 1);
+//         }
+//     } else if (status === 'absent') {
+//         if (!absent.includes(studentId)) {
+//             absent.push(studentId);
+//         }
+//         const index = present.indexOf(studentId);
+//         if (index !== -1) {
+//             present.splice(index, 1);
+//         }
+//     }
 
-    // console.log('Present:', present);
-    // console.log('Absent:', absent);
-}
+//     // console.log('Present:', present);
+//     // console.log('Absent:', absent);
+// }
 
 function submitAttendance() {
     // console.log("Submitting Attendance...");
@@ -190,7 +191,7 @@ async function submitAttendance(batchName, batchStandard) {
             throw new Error(`Failed to submit attendance: ${response.statusText}`);
         }
         const responseData = await response.json();
-        console.log(responseData);
+        // console.log(responseData);
         alert('Attendance submitted successfully!');
     } catch (error) {
         console.error('Error submitting attendance:', error);
