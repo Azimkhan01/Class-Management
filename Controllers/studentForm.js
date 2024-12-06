@@ -5,7 +5,7 @@ const studentForm = async(req, res) => {
   try{
     const {studentName,studentAge,gender,studentClass,batchName,previousGrade,parentWhatsapp,parentEmail,studentWhatsapp} = req.body
     const studentId = async()=>{
-     let count = await student.countDocuments({ batchName: batchName });
+     let count = await student.countDocuments({ batch: batchName });
      let batchData = await batch.find({batchName:batchName})
     //  console.log(batchData)
      let standard = batchData[0].batchStandard

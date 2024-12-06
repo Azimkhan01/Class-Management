@@ -1,0 +1,80 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    /* margin-top: 4%; */
+    gap: 20px;
+    margin-top: 4%;
+}
+
+#batches button {
+    padding: 10px;
+    background-color: #0061CA;
+    color: white;
+    font-family: inter, sans-serif;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+#batches button:hover {
+    font-weight: 500;
+    background-color: #1e78d1; 
+    border-color: #004080; 
+}
+
+#batches button:focus {
+    outline: 2px solid #004080; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+th, td {
+    font-family: heebo,sans-serif;
+    color: rgb(41, 40, 40);
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #0061CA;
+    color: white;
+}
+button {
+    font-family: inter,sans-serif;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.present {
+    background-color: #28a745;
+    color: white;
+}
+.absent {
+    background-color: #dc3545;
+    color: white;
+}
+.submit {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #0061CA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .container{
+        margin-top: 10%;
+    }
+  }

@@ -24,7 +24,11 @@ const batchSchema = new mongoose.Schema(
     },
     students:{
       type:Array
-    }
+    },attendance:{
+    type: Array
+},totalDays:{
+  type: Number
+}
   },
   {
     timestamps: true,

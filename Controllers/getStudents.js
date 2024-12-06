@@ -8,8 +8,8 @@ const getStudents = async(req,res)=>{
         {
             // console.log(req.query)
             // console.log("query called ..")
-            const data = await student.find({batch:req.query.batch});
-            // console.log(data)
+            const data = await student.find({...req.query}); //if the req
+            console.log(data)
             res.json(data)
         }else{
             // console.log("without query called ..")

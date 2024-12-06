@@ -33,7 +33,11 @@ const studentSchema = new mongoose.Schema(
         unique:true
     },previousGrade:{
         type: String
-    }
+    },present:{
+      type: Array
+  },absent:{
+    type: Array
+}
   },
   {
     timestamps: true,
