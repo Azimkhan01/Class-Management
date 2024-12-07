@@ -28,6 +28,8 @@ const batchSchema = new mongoose.Schema(
     type: Array
 },totalDays:{
   type: Number
+},tests:{
+  type:Array
 }
   },
   {

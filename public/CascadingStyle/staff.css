@@ -18,6 +18,17 @@
     margin-top: 4%;
 }
 
+.container3{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  /* margin-top: 4%; */
+  gap: 20px;
+  margin-top: 0%;
+}
+
 .students{
     display: none;
     padding: 10px;
@@ -155,7 +166,47 @@ button:hover {
   #searchInput input:hover {
     border-color: #0056b3; /* Hover effect */
   }
-  
+
+  .testsheet {
+    display: none;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.testEditForm input,
+.testEditForm select,
+.testEditForm textarea,
+.testEditForm button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.testEditForm textarea {
+    height: 80px;
+    resize: none;
+}
+
+.testEditForm button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.testEditForm button:hover {
+    background-color: #0056b3;
+}
+
 
   @media only screen and (max-width: 768px) {
     .container1{

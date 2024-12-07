@@ -26,18 +26,66 @@
             </div>
         </div>
     </div>
-   <div id="searchInput">
-  <div class="studentFilter" ><input id="findStudent" type="text" placeholder="Search by ..."><p id="searchTotal">Total</p></div>
-</div>
-<div id="searchResults">
+    <div id="searchInput">
+        <div class="studentFilter"><input id="findStudent" type="text" placeholder="Search by ...">
+            <p id="searchTotal">Total</p>
+        </div>
+    </div>
+    <div id="searchResults">
 
-</div>
+    </div>
 
     <div id="container" class="container">
 
     </div>
-
+    
+    <div class="container3">
+        <div class="staffHandler">
+            <div>
+                <p>Plan Test</p>
+            </div>
+            <div>
+                <button id="test">
+                    <i class="fa-solid fa-book"></i>
+                </button>
+            </div>
+        </div>
     </div>
+<div id="testSheet" class="testsheet">
+    <form class="testEditForm">
+        <!-- Topic Input -->
+        <input id="topic" class="topic" type="text" placeholder="Enter Topic" required>
+        
+        <!-- Total Chapters Input -->
+        <input id="chp" class="chp" type="text" placeholder="Total Chapters" required>
+
+         <!-- Total Subject Input -->
+        <input id="subjects" class="subjects" type="number" placeholder="Total Subjects" required>
+        <div id="totalSubject" class="totalSubject">
+
+        </div>
+        <!-- Exam Date Input -->
+        <input id="examDate" class="examDate" type="datetime-local" required>
+        
+        <!-- Batch Dropdown -->
+        <select name="batch" id="testBatch" required>
+            <option value disabled selected>Select Batch</option>
+        </select>
+        
+        <!-- Class Dropdown -->
+        <select name="class" id="testClass" required>
+            <option value disabled selected>Select Class</option>
+        </select>
+        
+        <!-- Note Textarea -->
+        <textarea name="NOte" id="note" placeholder="Enter any notes here"></textarea>
+        
+        <!-- Submit Button -->
+        <button type="button" onclick="handleSheet()">Submit</button>
+    </form>
+</div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js"
         integrity="sha512-TjMd9u2haGIV8ZYBQDPyGJfei5Gc2U7iw1lnCu1Z2DHlTcirZ8c6nEvSixFDc3rRNQfSptbS7rF1m7bLf8wxbg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
