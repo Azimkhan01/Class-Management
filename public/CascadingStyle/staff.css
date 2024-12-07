@@ -207,6 +207,34 @@ button:hover {
     background-color: #0056b3;
 }
 
+#showEntryTableButton {
+  display: none;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#showEntryTableButton button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#showEntryTableButton button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#showEntryTableButton button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
 
   @media only screen and (max-width: 768px) {
     .container1{

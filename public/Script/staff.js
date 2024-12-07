@@ -323,7 +323,7 @@ let handleSheet = async () => {
     if (response.ok) {
       let result = await response.json();
       alert("Test sheet submitted successfully!");
-      console.log("Server Response:", result);
+      updateEntryTableButton();
     } else {
       let errorData = await response.json();
       console.error("Server Error:", errorData);
@@ -334,3 +334,49 @@ let handleSheet = async () => {
     alert("An error occurred. Please try again later.");
   }
 };
+
+// showEntryTableButton
+const Entry = document.getElementById('Entry');
+const showEntryTableButton = document.getElementById('showEntryTableButton');
+let entryOpen = true
+Entry.addEventListener('click',()=>{
+
+  showEntryTableButton.style.display = entryOpen ? "flex" : "none"
+  entryOpen = !entryOpen
+
+});
+
+const updateEntryTableButton = ()=>{
+  try{
+    fetch(`${window.location.origin}/getTests`).then(data=>data.json()).then((r)=>{
+      if(r)
+      {
+        
+        let s =''
+        r.forEach(element => {
+          s += `<button id="${element['_id']}" onclick="handleEntryTable('${element["_id"].toString()}')">${(element.batch).toUpperCase() + ' - ' + element.testClass + " : " + (element.topic).toUpperCase()}</button>`;
+
+        });
+        showEntryTableButton.innerHTML = ''
+        showEntryTableButton.innerHTML = s
+      }else{
+        showEntryTableButton.innerHTML = '<p>No Entries or error occurs</p>'
+      }
+  
+    })
+  }catch(error){
+if(error)
+{
+    showEntryTableButton.innerHTML = '<p>No Entries or error occurs</p>'
+}
+  }
+}
+updateEntryTableButton()
+
+// handleEntryTable
+
+const handleEntryTable =async (id)=>{
+
+  alert(id)
+
+}
