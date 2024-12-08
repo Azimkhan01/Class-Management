@@ -236,6 +236,142 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
+/* checkBox */
+/* General container styling */
+#checkBoxSubject {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+  font-family: heebo, sans-serif;
+  font-size: 14px;
+}
+
+/* Styling the label */
+#checkBoxSubject label {
+  margin-right: 10px;
+  color: #333; /* Dark text color */
+}
+
+/* Styling the checkbox */
+#checkBoxSubject input[type="checkbox"] {
+  width: 15px; /* Adjust size */
+  height: 15px;
+  accent-color: #007bff; /* Modern browsers support this for checkbox color */
+  cursor: pointer;
+}
+
+/* Optional: Add hover effects */
+#checkBoxSubject input[type="checkbox"]:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+/* Optional: Checked state custom effect */
+#checkBoxSubject input[type="checkbox"]:checked {
+  outline: 2px solid #007bff; /* Blue border on check */
+  outline-offset: 2px;
+}
+
+/* checkBox end */
+
+.crossBar{
+
+  padding: 12px;
+  display: none;
+  justify-content: end;
+  color: #007bff;
+}
+
+
+#MainentryTable {
+  padding: 10px;
+  display: none;
+  width: 100%;
+  margin: 10px 0;
+}
+
+#tableEn {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tableEn th, #tableEn td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+#tableEn th {
+  background-color: #007bff;
+  color: white;
+}
+
+#tableEn td {
+  background-color: #f9f9f9;
+}
+
+#tableEn tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tableEn td div {
+  margin: 5px 0;
+}
+
+#tableEn input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#tableEn input[type="number"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#tableEn tr:hover {
+  background-color: #e0f7fa;
+}
+
+#handleMarks{
+  border: 0px solid transparent;
+  font-weight: 600;
+  padding: 10px 15px;
+  background-color: #007bff;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+}
+
+#handleMarks:hover{
+  transition: all 0.1s ease-in-out;
+  border: 1px dotted white;
+  background-color: #002952;
+}
+
+@media (max-width: 768px) {
+  #tableEn {
+    font-size: 14px;
+  }
+
+  #tableEn td, #tableEn th {
+    padding: 8px;
+  }
+
+  #MainentryTable {
+    display: block;
+    overflow-x: auto;
+  }
+
+ 
+}
+
+
+
   @media only screen and (max-width: 768px) {
     .container1{
         margin-top: 10%;

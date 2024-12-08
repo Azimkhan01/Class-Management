@@ -66,20 +66,17 @@ findStudent.addEventListener("input", async (e) => {
         filteredStudents.forEach((student) => {
           studentTable += `
             <tr>
-              <td><img src="${
-                window.location.origin
-              }/public/Assets/Student_Images/${
-            student.image || "default-image.jpg"
-          }" alt="${student.name}" width="50" height="50"></td>
+              <td><img src="${window.location.origin
+            }/public/Assets/Student_Images/${student.image || "default-image.jpg"
+            }" alt="${student.name}" width="50" height="50"></td>
               <td>${student.name}</td>
               <td>${student.studentid}</td>
               <td>${student.batch}</td>
               <td>${student.gender}</td>
               <td>${student.age}</td>
               <td>
-                <button onClick="handleView('${
-                  student["_id"]
-                }')" class="actionButton">View</button>
+                <button onClick="handleView('${student["_id"]
+            }')" class="actionButton">View</button>
               </td>
             </tr>`;
         });
@@ -120,9 +117,8 @@ async function fetchData() {
         s += `
           <div class="staffHandler">
             <div>
-              <p>${(element.batchName || "").toUpperCase()} - ${
-          element.batchStandard || ""
-        }</p>
+              <p>${(element.batchName || "").toUpperCase()} - ${element.batchStandard || ""
+          }</p>
             </div>
             <div>
               <button id="show${element.batchName}">
@@ -130,8 +126,7 @@ async function fetchData() {
               </button>
             </div>
           </div>
-          <div class="students" id="${
-            "student" + element.batchName
+          <div class="students" id="${"student" + element.batchName
           }" style="display: none;">
             <!-- Student details will be dynamically added here -->
           </div>`;
@@ -186,19 +181,16 @@ async function fetchData() {
                 students.forEach((student) => {
                   studentTable += `
                     <tr>
-                      <td><img src="${
-                        window.location.origin
-                      }/public/Assets/Student_Images/${
-                    student.image || "default-image.jpg"
-                  }" alt="${student.name}" width="50" height="50"></td>
+                      <td><img src="${window.location.origin
+                    }/public/Assets/Student_Images/${student.image || "default-image.jpg"
+                    }" alt="${student.name}" width="50" height="50"></td>
                       <td>${student.name}</td>
                       <td>${student.studentid}</td>
                       <td>${student.gender}</td>
                       <td>${student.age}</td>
                       <td>
-                        <button onClick="handleView('${
-                          student["_id"]
-                        }')" class="actionButton">View</button>
+                        <button onClick="handleView('${student["_id"]
+                    }')" class="actionButton">View</button>
                       </td>
                     </tr>`;
                 });
@@ -285,8 +277,6 @@ let handleSheet = async () => {
     alert("Please fill out all required fields.");
     return;
   }
-
-  // Data to be sent to the server
   const formData = {
     topic,
     chp,
@@ -296,7 +286,6 @@ let handleSheet = async () => {
     note,
     subjects: [],
   };
-
   // Add dynamic subject inputs
   for (let i = 1; i <= subjectsCount; i++) {
     const subjectValue = document.getElementById(`subject-${i}`).value.trim();
@@ -307,9 +296,7 @@ let handleSheet = async () => {
       return;
     }
   }
-
   // console.table(formData);
-
   try {
     let response = await fetch(`${window.location.origin}/addTestSheet`, {
       method: "POST",
@@ -339,44 +326,151 @@ let handleSheet = async () => {
 const Entry = document.getElementById('Entry');
 const showEntryTableButton = document.getElementById('showEntryTableButton');
 let entryOpen = true
-Entry.addEventListener('click',()=>{
+Entry.addEventListener('click', () => {
 
   showEntryTableButton.style.display = entryOpen ? "flex" : "none"
   entryOpen = !entryOpen
-
 });
-
-const updateEntryTableButton = ()=>{
-  try{
-    fetch(`${window.location.origin}/getTests`).then(data=>data.json()).then((r)=>{
-      if(r)
-      {
-        
-        let s =''
+const updateEntryTableButton = () => {
+  try {
+    fetch(`${window.location.origin}/getTests`).then(data => data.json()).then((r) => {
+      if (r) {
+        let s = ''
         r.forEach(element => {
           s += `<button id="${element['_id']}" onclick="handleEntryTable('${element["_id"].toString()}')">${(element.batch).toUpperCase() + ' - ' + element.testClass + " : " + (element.topic).toUpperCase()}</button>`;
-
         });
         showEntryTableButton.innerHTML = ''
         showEntryTableButton.innerHTML = s
-      }else{
+      } else {
         showEntryTableButton.innerHTML = '<p>No Entries or error occurs</p>'
       }
-  
     })
-  }catch(error){
-if(error)
-{
-    showEntryTableButton.innerHTML = '<p>No Entries or error occurs</p>'
-}
+  } catch (error) {
+    if (error) {
+      showEntryTableButton.innerHTML = '<p>No Entries or error occurs</p>'
+    }
   }
 }
-updateEntryTableButton()
+updateEntryTableButton(); var sub = [];
+var selectedSubjects = [];
+const checkBoxSubject = document.getElementById('checkBoxSubject');
+const crossBar = document.getElementById('crossBar');
+const handleMarksButton = document.getElementById('handleMarks');
+const handleEntryTable = async (id) => {
+  try {
+    selectedSubjects = []
+    const response = await fetch(`${window.location.origin}/getSheet/${id}`);
+    const data = await response.json();
+    if (data.length > 0) {
+      const subjects = data[0].subjects;
+      let s = '';
+      sub = [];
+      subjects.forEach((element) => {
+        sub.push(element);
+        s += `
+          <div>
+            <label for="${element}Checkbox">${element.toUpperCase()}:</label>
+            <input type="checkbox" id="${element}Checkbox">
+          </div>
+        `;
+      });
+      checkBoxSubject.innerHTML = s;
+      document.getElementById('MainentryTable').style.display = "block";
+      crossBar.style.display = 'flex';
+      updateTheTableBody(data[0].batch, data[0].testClass);
+      sub.forEach((element) => {
+        const box = document.getElementById(`${element}Checkbox`);
+        box.addEventListener('click', (e) => {
+          if (box.checked) {
+            selectedSubjects.push(element);
+            updateTheTableBody(data[0].batch, data[0].testClass);
+          } else {
+            const index = selectedSubjects.indexOf(element);
+            if (index > -1) {
+              selectedSubjects.splice(index, 1);
+              updateTheTableBody(data[0].batch, data[0].testClass);
+            }
+          }
+        });
+      });
+      handleMarksButton.addEventListener('click', () => addMarks(data));
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+let openCross = true;
+crossBar.addEventListener('click', () => {
+  let MainentryTable = document.getElementById('MainentryTable');
+  if (openCross) {
+    MainentryTable.style.display = 'none';
+    checkBoxSubject.style.display = "none";
+    crossBar.innerHTML = '<i class="fa-solid fa-rotate-right"></i>';
+  } else {
+    MainentryTable.style.display = "block";
+    checkBoxSubject.style.display = "flex";
+    crossBar.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  }
+  openCross = !openCross;
+});
+const updateTheTableBody = async (batch, testClass) => {
+  try {
+    const EntryTableBody = document.getElementById('EntryTableBody');
 
-// handleEntryTable
+    const response = await fetch(`${window.location.origin}/getstudents?batch=${batch}&class=${testClass}`);
+    if (response.ok) {
+      const data = await response.json();
+      const savedValues = {};
+      const inputs = document.querySelectorAll('#EntryTableBody input');
+      inputs.forEach(input => {
+        savedValues[input.id] = input.value;
+      });
+      EntryTableBody.innerHTML = '';
 
-const handleEntryTable =async (id)=>{
+      data.forEach(element => {
+        let tr = document.createElement('tr');
 
-  alert(id)
+        let subjectsHTML = '';
+        if (selectedSubjects && selectedSubjects.length > 0) {
+          selectedSubjects.forEach(subject => {
+            subjectsHTML += `
+              <div><input id="${subject}-${element.studentid}" type="number" placeholder="${subject}" value="${savedValues[`${subject}-${element.studentid}`] || ''}"></div>
+            `;
+          });
+        } else {
+          subjectsHTML = `<div>No subjects available</div>`;
+        }
 
-}
+        tr.innerHTML = `
+          <td>${element.studentid}</td>
+          <td>${(element.name).toUpperCase()}</td>
+          <td>${element.batch} - ${element.class}</td>
+          <td id="SubjectDaal">
+            ${subjectsHTML}
+          </td>
+        `;
+        EntryTableBody.appendChild(tr);
+      });
+    } else {
+      console.log('Failed to fetch data');
+    }
+  } catch (error) {
+    console.log('Error fetching data:', error);
+  }
+};
+const addMarks = (data) => {
+  alert("Marks submission clicked");
+  const allInputs = document.querySelectorAll('#EntryTableBody input');
+  const marksData = {};
+
+  allInputs.forEach(input => {
+    const studentId = input.id.split('-')[1];
+    const subject = input.placeholder;
+    const marks = input.value;
+    if (!marksData[studentId]) {
+      marksData[studentId] = {};
+    }
+    marksData[studentId][subject] = { marks: marks };
+  });
+  console.log(marksData);
+};
