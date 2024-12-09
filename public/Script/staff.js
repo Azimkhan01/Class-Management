@@ -202,7 +202,7 @@ async function handleTotalSubject(e) {
 
 async function handleEntryForm() {
   const EntryVal = {
-      class: classSelect.value !== "" ? classSelect.value : null,
+      testClass: classSelect.value !== "" ? classSelect.value : null,
       batch: batchSelect.value,
       topic: document.getElementById("testTopic").value,
       id: document.getElementById("note").value

@@ -8,6 +8,8 @@ const addMarks = async (req, res) => {
                 return res.status(400).json({ status: false, message: 'Missing required fields' });
             }
 
+            let AddTest = await test.create({})
+
             console.log(testClass, batch, topic, id, subjects);
 
             res.json({ status: true, message: 'Marks added successfully!' });
