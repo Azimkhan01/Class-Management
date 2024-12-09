@@ -205,17 +205,20 @@ async function handleEntryForm() {
       testClass: classSelect.value !== "" ? classSelect.value : null,
       batch: batchSelect.value,
       topic: document.getElementById("testTopic").value,
-      id: document.getElementById("note").value
+      note: document.getElementById("note").value
   };
 
-  if (!EntryVal.class) {
+  // Check if class is selected, if not disable the submit button and stop the function
+  if (!EntryVal.testClass) {
       entrySubmitButton.disabled = true;
       console.error("Class is not selected. Form submission disabled.");
+      alert("Please select a class.");
       return;
   } else {
       entrySubmitButton.disabled = false;
   }
 
+  // Collect subject values from the dynamically created input fields
   const subjectName = document.querySelectorAll(".subjectName");
   const subjectValues = Array.from(subjectName).map(input => input.value);
   EntryVal.subjects = subjectValues;
@@ -223,6 +226,7 @@ async function handleEntryForm() {
   console.log("Form Data:", EntryVal);
 
   try {
+      // Send the form data to the server using fetch
       const response = await fetch(`${window.location.origin}/addMarks`, {
           method: 'POST',
           headers: {
@@ -231,21 +235,25 @@ async function handleEntryForm() {
           body: JSON.stringify(EntryVal)
       });
 
+      // Handle server response
       if (response.ok) {
           const result = await response.json();
           console.log("Success:", result);
           alert("Marks submitted successfully!");
       } else {
-          console.error("Error submitting form:", response.status);
+          const errorData = await response.json();
+          console.error("Error submitting form:", response.status, errorData);
           alert("Error submitting the form. Please try again.");
       }
   } catch (error) {
       console.error("Network Error:", error);
       alert("Network error occurred. Please check your connection and try again.");
   } finally {
+      // Re-enable the submit button after the operation is complete
       entrySubmitButton.disabled = false;
   }
 }
+
 
 
 
