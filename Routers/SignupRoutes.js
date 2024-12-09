@@ -20,6 +20,7 @@ const { attendance } = require("../Controllers/attendance");
 const { handleAttendance } = require("../Controllers/handleAttendance");
 const {addTestSheet} = require('../Controllers/addTestSheet');
 const { view } = require("../Controllers/view");
+const { addMarks } = require("../Controllers/addMarks");
 
 // Images
 
@@ -51,5 +52,6 @@ router.route("/addBatch").post(addBatch);
 router.route("/studentForm")
   .post(uploadStudentImage.single("studentImage"), studentForm);
 router.route("/handleAttendance").post(handleAttendance);
-router.route('/addTestSheet').post(addTestSheet)
+router.route('/addTestSheet').post(addTestSheet);
+router.route('/addMarks').post(addMarks);
 module.exports = { router };

@@ -1,28 +1,28 @@
-const {student, batch} = require('../Database/db')
+const { student } = require('../Database/db');
+
 const isEmpty = (obj) => Object.keys(obj).length === 0;
-const getStudents = async(req,res)=>{
 
-    if(req.cookies.staff)
-    {
-        if(!isEmpty(req.query))
-        {
-            console.log(req.query)
-            // console.log("query called ..")
-            const data = await student.find({...req.query}); //if the req
-            // console.log(data)
-            res.json(data)
-        }else{
-            // console.log("without query called ..")
-            const data = await student.find({});
-            // console.log(data)
-            res.json(data)
-        }
-         
-
-    }else{
-        res.json({"error":"invalid user is accessing ..."})
+const getStudents = async (req, res) => {
+  try {
+    if (!req.cookies.staff) {
+      return res.status(403).json({ error: "Unauthorized access" });
     }
 
-}
+    let data;
 
-module.exports = {getStudents}
+    if (!isEmpty(req.query)) {
+      console.log("Query parameters received:", req.query);
+      data = await student.find({ ...req.query });
+    } else {
+      console.log("Fetching all students...");
+      data = await student.find({});
+    }
+console.log(data)
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error fetching students:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = { getStudents };

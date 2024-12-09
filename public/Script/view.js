@@ -52,7 +52,8 @@ async function totalAttendance() {
       ) {
         currentBatch = element.attendance; // Get the attendance data
         const totalPresent = studentData[0].present.length; // Number of present days
-        const totalDays = element.totalDays;               // Total days of attendance
+        const totalDays = element.totalDays;
+        const totalAbsent = studentData[0].absent.length               // Total days of attendance
         
         // Generate the chart dynamically
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -70,7 +71,7 @@ async function totalAttendance() {
               toolTipContent: "<b>{label}:</b> {y} ",
               dataPoints: [
                 { y: totalPresent, label: "Present" },        // Use totalPresent dynamically
-                { y: totalDays - totalPresent, label: "Absent" }, // Calculate absent dynamically
+                { y: totalAbsent, label: "Absent" }, // Calculate absent dynamically
               ],
             },
           ],

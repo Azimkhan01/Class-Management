@@ -1,380 +1,274 @@
 .container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px;
-    gap: 20px;
-}
-
-.container1{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px;
-    /* margin-top: 4%; */
-    gap: 20px;
-    margin-top: 4%;
-}
-
-.container3{
-  width: 100%;
+  margin-top: 4.5%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 10px;
-  /* margin-top: 4%; */
-  gap: 20px;
-  margin-top: 0%;
-}
-
-.students{
-    display: none;
-    padding: 10px;
-    width: 100%;
-}
-
-.staffHandler{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px;
-    /* background-color: red; */
-}
-
-.staffHandler p{
-    color: #0064D0;
-}
-
-.staffHandler button{
-    border-radius: 5px;
-    padding: 10px;
-    background-color: white;
-    color: #0064D0;
-    outline: none;
-    border: 0px solid transparent;
-    font-size: 15px;
-}
-button:hover {
-    transition: all 0.2s ease-in-out;
-    color: white;
-    background-color: #0056b3;
-  }
-
-  .students{
-    overflow-x: auto;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #0056b3; /* Primary Color */
-    color: #fff; /* White text for contrast */
-  }
-  
-  td img {
-    border-radius: 1%;
-    width: 50px;
-    height: 50px;
-  }
-  
-  /* Hover Effect for Rows */
-  tr:hover {
-    background-color: #f1f1f1; /* Light gray for hover effect */
-  }
-  
-  /* Button Styling */
-  button.actionButton {
-    background-color: #0056b3; /* Primary Color */
-    color: #fff; /* White text */
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  button.actionButton:hover {
-    background-color: #003d80; /* Darker shade for hover */
-  }
-  
-  button.actionButton:active {
-    background-color: #002952; /* Even darker shade for active state */
-  }
-  
-  #searchResults{
-    padding: 10px;
-  }
-
-  #searchInput {
-    display: none;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px; /* Smooth rounded corners */
-  }
-
-  .studentFilter{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 5%;
-  }
-
-  #searchTotal{
-    padding: 10px 15px;
-    background-color: #0064D0;
-    color: white;
-    border-radius: 10px;
-  }
-  
-  #searchInput input {
-    width: 80%;
-    padding: 12px;
-    font-family: 'Heebo', sans-serif;
-    font-size: 16px;
-    border: 2px solid #0064D0; /* Primary color border */
-    border-radius: 6px; /* Smooth edges */
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth animations */
-  }
-  
-  #searchInput input:focus {
-    border-color: #0056b3; /* Darker shade on focus */
-    box-shadow: 0 0 8px rgba(0, 100, 208, 0.4); /* Glow effect */
-  }
-  
-  #searchInput input::placeholder {
-    color: #888; /* Subtle placeholder color */
-    font-style: italic;
-  }
-  
-  #searchInput input:hover {
-    border-color: #0056b3; /* Hover effect */
-  }
-
-  .testsheet {
-    display: none;
-    max-width: 100%;
-    margin: 20px auto;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #f9f9f9;
-}
-
-.testEditForm input,
-.testEditForm select,
-.testEditForm textarea,
-.testEditForm button {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.testEditForm textarea {
-    height: 80px;
-    resize: none;
-}
-
-.testEditForm button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.testEditForm button:hover {
-    background-color: #0056b3;
-}
-
-#showEntryTableButton {
-  display: none;
   gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+}
+.search {
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-#showEntryTableButton button {
-  padding: 10px 20px;
+#searchInp {
+  width: 100%;
+  padding: 10px 15px;
   font-size: 16px;
-  cursor: pointer;
-  border: 2px solid #007BFF;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: white;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#showEntryTableButton button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-#showEntryTableButton button:focus {
+  border: 1px solid #ccc;
+  border-radius: 4px;
   outline: none;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* checkBox */
-/* General container styling */
-#checkBoxSubject {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px 0;
-  font-family: heebo, sans-serif;
-  font-size: 14px;
+#searchInp:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
 }
 
-/* Styling the label */
-#checkBoxSubject label {
-  margin-right: 10px;
-  color: #333; /* Dark text color */
+#searchBox {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* max-height: 200px; */
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
 }
 
-/* Styling the checkbox */
-#checkBoxSubject input[type="checkbox"] {
-  width: 15px; /* Adjust size */
-  height: 15px;
-  accent-color: #007bff; /* Modern browsers support this for checkbox color */
+#searchBox div {
+  padding: 10px 15px;
   cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s;
 }
 
-/* Optional: Add hover effects */
-#checkBoxSubject input[type="checkbox"]:hover {
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
-}
+/* #searchBox div:hover {
+  background-color: #007bff;
+  color: white;
+} */
 
-/* Optional: Checked state custom effect */
-#checkBoxSubject input[type="checkbox"]:checked {
-  outline: 2px solid #007bff; /* Blue border on check */
-  outline-offset: 2px;
-}
-
-/* checkBox end */
-
-.crossBar{
-
-  padding: 12px;
-  display: none;
-  justify-content: end;
-  color: #007bff;
-}
-
-
-#MainentryTable {
-  padding: 10px;
-  display: none;
-  width: 100%;
-  margin: 10px 0;
-}
-
-#tableEn {
+/* Table Styling */
+table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+  background-color: #fff;
 }
 
-#tableEn th, #tableEn td {
-  border: 1px solid #ddd;
-  padding: 12px;
+thead th {
   text-align: left;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #ddd;
 }
 
-#tableEn th {
+tbody tr {
+  border: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+tbody td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Image Styling */
+tbody td img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+/* Button Styling */
+tbody td button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect on buttons only */
+tbody td button:hover {
   background-color: #007bff;
   color: white;
 }
 
-#tableEn td {
+button {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.search-result {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.search-result img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-result button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hover effect on buttons only */
+.search-result button:hover {
+  background-color: #0056b3;
+}
+.staffHandler{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  /* background-color: red; */
+}
+
+.staffHandler p{
+  color: #0064D0;
+}
+
+.staffHandler button{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: #0064D0;
+  outline: none;
+  border: 0px solid transparent;
+  font-size: 15px;
+}
+
+.staffHandler button:hover {
+  transition: all 0.1s ease-in;
+  color: white;
+  background-color: #0056b3;
+}
+
+#studentBatch {
+  display: none;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+}
+
+#studentBatch button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px; /* Adjusted for mobile devices */
+  padding: 12px 20px; /* Adjusted for better mobile appearance */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: center;
+  flex: 1 1 45%; /* Buttons take up 45% of the container width */
+  max-width: 250px; /* Adjusted max-width for tablets */
+  margin: 5px; /* Margin for spacing */
+}
+
+#studentBatch button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#studentBatch button:active {
+  background-color: #004085;
+}
+
+#studentBox{
+  display: none;
+}
+
+.MarksFormContainer {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
 }
 
-#tableEn tr:nth-child(even) {
-  background-color: #f2f2f2;
+#EntryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-#tableEn td div {
-  margin: 5px 0;
-}
-
-#tableEn input[type="number"] {
+#EntryForm select,
+#EntryForm input,
+#EntryForm textarea,
+#EntryForm button {
   width: 100%;
-  padding: 8px;
-  margin: 5px 0;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
 }
 
-#tableEn input[type="number"]:focus {
+#EntryForm select:focus,
+#EntryForm input:focus,
+#EntryForm textarea:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-#tableEn tr:hover {
-  background-color: #e0f7fa;
-}
-
-#handleMarks{
-  border: 0px solid transparent;
-  font-weight: 600;
-  padding: 10px 15px;
+#EntryForm button {
   background-color: #007bff;
-  border-radius: 10px;
-  outline: none;
-  color: white;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-#handleMarks:hover{
-  transition: all 0.1s ease-in-out;
-  border: 1px dotted white;
-  background-color: #002952;
+#EntryForm button:hover {
+  background-color: #0056b3;
 }
 
+
+/* For tablets and small devices (up to 768px) */
 @media (max-width: 768px) {
-  #tableEn {
-    font-size: 14px;
+  .container{
+    margin-top: 10%;
   }
-
-  #tableEn td, #tableEn th {
-    padding: 8px;
+  #studentBatch button {
+    font-size: 14px; /* Slightly smaller font for tablet */
+    padding: 10px 15px; /* Adjusted padding */
+    flex: 1 1 45%; /* Keep 45% of container width */
+    max-width: 220px; /* Maximum button width for tablets */
   }
-
-  #MainentryTable {
-    display: block;
-    overflow-x: auto;
-  }
-
- 
 }
 
-
-
-  @media only screen and (max-width: 768px) {
-    .container1{
-        margin-top: 10%;
-    }
+/* For mobile devices (portrait mode) */
+@media (max-width: 480px) {
+  #studentBatch button {
+    font-size: 12px; /* Smaller font size for small screens */
+    padding: 8px 12px; /* Smaller padding for mobile */
+    flex: 1 1 90%; /* Buttons take 90% of container width */
   }
-  
+}
+

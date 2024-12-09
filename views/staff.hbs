@@ -14,128 +14,141 @@
 
 <body>
     {{>staffNavbar}}
-    <div class="container1">
+    <div class="container">
+
+        <div class="search" id="search">
+            <input id="searchInp" type="text" placeholder="Search by name or Id">
+            <div id="searchBox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>IMAGE</th>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>CLASS</th>
+                            <th>BATCH</th>
+                            <th>ACTION</th>
+                            <th>UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="searchBody">
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Student Image"></td>
+                            <td>1212</td>
+                            <td>Azim</td>
+                            <td>9</td>
+                            <td>After</td>
+                            <td><button>View</button></td>
+                            <td><button>Update</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="studentTable">
+
+            <div class="staffHandler">
+                <div>
+                    <p>Show Student</p>
+                </div>
+                <div>
+                    <button id="ShowStudent">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="studentBatch">
+                {{!-- <button>Enter Your Name</button>
+                <button>Enter Your Name</button>
+                <button>Enter Your Name</button>
+                <button>Enter Your Name</button>
+                <button>Enter Your Name</button> --}}
+            </div>
+
+            <div id="studentBox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>IMAGE</th>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>CLASS</th>
+                            <th>BATCH</th>
+                            <th>ACTION</th>
+                            <th>UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="StudentBody">
+                        {{!-- <tr>
+                            <td><img src="https://via.placeholder.com/50" alt="Student Image"></td>
+                            <td>1212</td>
+                            <td>Azim</td>
+                            <td>9</td>
+                            <td>After</td>
+                            <td><button>View</button></td>
+                            <td><button>Update</button></td>
+                        </tr> --}}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="entryOfTest">
+
+            <div class="staffHandler">
+                <div>
+                    <p>Test Marks Entry</p>
+                </div>
+                <div>
+                    <button id="MarksForm">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="MarksFormContainer" class="MarksFormContainer">
+                <form id="EntryForm">
+                    <!-- Class Selection -->
+                    <select id="classSelect" name="class" required>
+                        <option value="" disabled selected>Select Class</option>
+                    </select>
+
+                    <!-- Batch Selection -->
+                    <select id="batchSelect" name="batch" required>
+                        <option value="" disabled selected>Select Batch</option>
+                    </select>
+
+                    <!-- Test Topic -->
+                    <input type="text" id="testTopic" name="testTopic" placeholder="Test Topic" required />
+
+                    <!-- Total Subject -->
+                    <input type="number" id="totalSubject" name="totalSubject" placeholder="Total Subjects" min="1" required />
+                    <div id="subjectNameEntry">
+
+                    </div>
+                    <!-- Note -->
+                    <textarea id="note" name="note"  rows="4" cols="50" style="resize: none;" placeholder="Add notes..." required></textarea>
+
+                    <!-- Submit Button -->
+                    <button id="entrySubmitButton" type="button" onclick="handleEntryForm()">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="alotMarks">
         <div class="staffHandler">
-            <div>
-                <p>Search</p>
-            </div>
-            <div>
-                <button id="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div id="searchInput">
-        <div class="studentFilter"><input id="findStudent" type="text" placeholder="Search by ...">
-            <p id="searchTotal">Total</p>
-        </div>
-    </div>
-    <div id="searchResults">
-
-    </div>
-
-    <div id="container" class="container">
-
-    </div>
-    <div class="container3">
-        <div class="staffHandler">
-            <div>
-                <p>Marks Entry</p>
-            </div>
-            <div>
-                <button id="Entry">
-                    <i class="fa-solid fa-angle-down"></i>
-                </button>
+                <div>
+                    <p>Tests</p>
+                </div>
+                <div>
+                    <button id="ShowTest">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="showEntryTableButton">
-
-    </div>
-    <div id="checkBoxDiv">
-        <div id="crossBar" class="crossBar"><i class="fa-solid fa-xmark"></i></div>
-        <div id="checkBoxSubject">
-
-        </div>
-        {{!-- <div>
-            <label for="englishCheckbox">English:</label>
-            <input type="checkbox" id="englishCheckbox">
-        </div>
-        <div>
-            <label for="englishCheckbox">English:</label>
-            <input type="checkbox" id="englishCheckbox">
-        </div> --}}
-    </div>
-    <div id="MainentryTable" class="MainentryTable" style="display: none;">
-        <table id="tableEn">
-            <thead id="EntryTableHead">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Batch - Class</th>
-                    <th>Subject</th>
-                </tr>
-            </thead>
-            <tbody id="EntryTableBody">
-                <tr>
-                    <td>This is id</td>
-                    <td>This is name</td>
-                    <td>
-                        <div><input type="number" placeholder="English"></div>
-                        <div><input type="number" placeholder="Maths"></div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="addtheMarksButton"><button id="handleMarks">Submit
-                Marks</button></div>
-    </div>
-
-    <div class="container3">
-        <div class="staffHandler">
-            <div>
-                <p>Plan Test</p>
-            </div>
-            <div>
-                <button id="test">
-                    <i class="fa-solid fa-book"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div id="testSheet" class="testsheet">
-        <form class="testEditForm">
-            <!-- Topic Input -->
-            <input id="topic" class="topic" type="text" placeholder="Enter Topic" required>
-
-            <!-- Total Chapters Input -->
-            <input id="chp" class="chp" type="text" placeholder="Total Chapters" required>
-
-            <!-- Total Subject Input -->
-            <input id="subjects" class="subjects" type="number" placeholder="Total Subjects" required>
-            <div id="totalSubject" class="totalSubject">
-
-            </div>
-            <!-- Exam Date Input -->
-            <input id="examDate" class="examDate" type="datetime-local" required>
-
-            <!-- Batch Dropdown -->
-            <select name="batch" id="testBatch" required>
-                <option value disabled selected>Select Batch</option>
-            </select>
-
-            <!-- Class Dropdown -->
-            <select name="class" id="testClass" required>
-                <option value disabled selected>Select Class</option>
-            </select>
-
-            <!-- Note Textarea -->
-            <textarea name="NOte" id="note" placeholder="Enter any notes here"></textarea>
-
-            <!-- Submit Button -->
-            <button type="button" onclick="handleSheet()">Submit</button>
-        </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js"

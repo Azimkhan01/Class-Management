@@ -142,7 +142,7 @@ async function loadBatches() {
     const batches = await response.json();
     const TotalBatches = document.getElementById("TotalBatches");
     TotalBatches.innerHTML = ""; // Clear existing content
-
+    batches.sort((a, b) => a.batchStandard - b.batchStandard);
     if (batches.length > 0) {
       let s = "";
       batches.forEach((element) => {
