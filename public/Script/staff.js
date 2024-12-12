@@ -12,10 +12,13 @@ const batchSelect = document.getElementById('batchSelect');
 const classSelect = document.getElementById('classSelect');
 const MarksForm = document.getElementById('MarksForm');
 const MarksFormContainer = document.getElementById('MarksFormContainer');
-const entrySubmitButton = document.getElementById('entrySubmitButton')
+const entrySubmitButton = document.getElementById('entrySubmitButton');
+const ShowTest = document.getElementById('ShowTest');
+const navigationofAttendance = document.getElementById('navigationofAttendance');
 const std = new Set();
 let openShowStudent = true;
-let openMarksForm = true
+let openMarksForm = true;
+let openFormBtn = true;
 // Add event listener
 search.addEventListener("input", async e => {
   const searchValue = e.target.value.trim(); // Trim extra spaces
@@ -59,6 +62,9 @@ MarksFormContainer.style.display = openMarksForm ? "block" : "none"
 openMarksForm = !openMarksForm 
 })
 
+ShowTest.addEventListener('click',async(e) =>{
+handleShowTest(e);
+});
 // Functions
 
 // Searching and updating the searchBox
@@ -254,7 +260,44 @@ async function handleEntryForm() {
   }
 }
 
+// handleShowTest
+async function handleShowTest(e)
+{
 
+  if(openFormBtn)
+  {
+
+    navigationofAttendance.style.display = "flex";
+    try{
+
+      let response = await fetch(`${window.location.origin}/getTests`) 
+let data = await response.json();
+if(data)
+{navigationofAttendance.innerHTML = ''
+  data.forEach(element => {
+    let div = document.createElement('div')
+    div.className = 'testHere'
+    let a = document.createElement('a')
+    a.href = `/markEntry/${element.batch}/${element.testClass}/${element.topic}`
+    a.innerText = `${(element.batch).toUpperCase()} - ${element.testClass} - ${(element.topic).toUpperCase()}`
+    a.target = "_blank";
+    div.appendChild(a);
+    
+    navigationofAttendance.appendChild(div);
+  });
+}else{
+  navigationofAttendance.innerHTML = `<div>${element.status || "try in some time may be error happened"}</div>`
+}
+    }catch(error){
+      console.log(error)
+    }
+
+  }else{
+navigationofAttendance.style.display = "none"
+  }
+ openFormBtn = !openFormBtn
+
+}
 
 
 

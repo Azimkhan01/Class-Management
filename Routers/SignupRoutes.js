@@ -11,7 +11,7 @@ const { studentLogin } = require("../Controllers/studentLogin");
 const { staffLogin } = require("../Controllers/staffLogin");
 const { studentOperationStaff } = require("../Controllers/studentOperation");
 const { addBatch } = require("../Controllers/addBatch");
-const { getBatches, getTests, getSheet, getBatch } = require("../Controllers/getBatches");
+const { getBatches, getSheet, getBatch } = require("../Controllers/getBatches");
 const { deleteBatch } = require("../Controllers/deleteBatch");
 const { studentForm } = require("../Controllers/studentForm");
 const {studentImage} = require('../Controllers/studentImageListing');
@@ -21,7 +21,9 @@ const { handleAttendance } = require("../Controllers/handleAttendance");
 const {addTestSheet} = require('../Controllers/addTestSheet');
 const { view } = require("../Controllers/view");
 const { addMarks } = require("../Controllers/addMarks");
-
+const { getTests } = require("../Controllers/getTests");
+const { markEntry } = require("../Controllers/markEntry");
+const { getStudentForTest } = require("../Controllers/getStudentForTest");
 // Images
 
 const uploadStudentImage =  multer({ 
@@ -37,13 +39,15 @@ router.route("/staff").get(staff)
 router.route("/staffOperation").get(staffOperation);
 router.route("/studentOperationStaff").get(studentOperationStaff);
 router.route("/getBatches").get(getBatches);
-router.route("/getTests").get(getTests);
 router.route("/getSheet/:id").get(getSheet);
 router.route("/getBatch").get(getBatch);
 router.route("/deleteBatch/:id").get(deleteBatch);
 router.route("/getStudents").get(getStudents);
 router.route('/attendance').get(attendance);
 router.route("/view/:id").get(view);
+router.route("/getTests").get(getTests);
+router.route("/markEntry/:batch/:class/:topic").get(markEntry);
+router.route('/getStudentForTest').get(getStudentForTest);
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);

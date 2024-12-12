@@ -1,0 +1,112 @@
+.container {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+thead th {
+    background-color: #0572EA; /* Your specified color */
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #D9E8FC; /* Lighter shade for hover */
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#tableHead {
+    background-color: #E7F3FF; /* Subtle color for table header row */
+    font-weight: bold;
+}
+
+th, td {
+    word-wrap: break-word;
+}
+
+input[type="number"] {
+    width: 95%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border: 1px solid #0572EA;
+    box-shadow: 0 0 5px rgba(5, 114, 234, 0.5);
+    background-color: #fff;
+}
+
+#inputforOutPut{
+    margin-top: 2.5%;
+}
+
+#submitBtn{
+    margin-top: 2.5%;
+    padding: 10px 15px;
+    background-color: #0572EA;
+    border: none;
+    border-radius: 5px;
+    font-family: inter,sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tbody td {
+        padding: 10px;
+        border: none;
+        position: relative;
+        text-align: right;
+    }
+
+    tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+}
