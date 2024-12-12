@@ -1,6 +1,6 @@
 .container {
-    overflow-x: auto;
-    max-width: 100%;
+    /* overflow-x: auto; */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -9,9 +9,10 @@
 }
 
 table {
+    overflow-x: auto;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-family: Arial, sans-serif;
     background-color: #fff;
 }
@@ -82,8 +83,14 @@ input[type="number"]:focus {
     color: white;
 }
 
-@media (max-width: 600px) {
+#dynamicTable{
+    margin-top: 2.5%;
+    overflow-x: auto;
+}
+
+/* @media (max-width: 600px) {
     table, thead, tbody, th, td, tr {
+        text-align: center;
         display: block;
     }
 
@@ -92,10 +99,11 @@ input[type="number"]:focus {
     }
 
     tbody td {
+    
         padding: 10px;
         border: none;
         position: relative;
-        text-align: right;
+        text-align: center;
     }
 
     tbody td::before {
@@ -109,4 +117,4 @@ input[type="number"]:focus {
     input[type="number"] {
         width: 100%;
     }
-}
+} */

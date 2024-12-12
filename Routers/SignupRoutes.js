@@ -24,6 +24,8 @@ const { addMarks } = require("../Controllers/addMarks");
 const { getTests } = require("../Controllers/getTests");
 const { markEntry } = require("../Controllers/markEntry");
 const { getStudentForTest } = require("../Controllers/getStudentForTest");
+const { enterMarks } = require("../Controllers/enterMarks");
+const { testById } = require("../Controllers/testById");
 // Images
 
 const uploadStudentImage =  multer({ 
@@ -48,6 +50,7 @@ router.route("/view/:id").get(view);
 router.route("/getTests").get(getTests);
 router.route("/markEntry/:batch/:class/:topic").get(markEntry);
 router.route('/getStudentForTest').get(getStudentForTest);
+router.route("/testById/:id").get(testById);
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);
@@ -58,4 +61,5 @@ router.route("/studentForm")
 router.route("/handleAttendance").post(handleAttendance);
 router.route('/addTestSheet').post(addTestSheet);
 router.route('/addMarks').post(addMarks);
+router.route('/enterMarks').post(enterMarks);
 module.exports = { router };

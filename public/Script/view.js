@@ -1,5 +1,7 @@
 const attendance = document.getElementById("attendance");
+const test = document.getElementById('test')
 let currentBatch = [];
+let testsHappen = []
 const months = [
   "jan",
   "feb",
@@ -50,6 +52,7 @@ async function totalAttendance() {
         element.batchName == studentData[0].batch &&
         element.batchStandard == studentData[0].class
       ) {
+        testsHappen = element.tests
         currentBatch = element.attendance; // Get the attendance data
         const totalPresent = studentData[0].present.length; // Number of present days
         const totalDays = element.totalDays;
@@ -130,7 +133,7 @@ async function totalAttendance() {
     });
 
     studentData[0].present.forEach((e) => {
-      console.log(e);
+      // console.log(e);
       const isoDate = e;
       const date = new Date(isoDate);
       const day = String(date.getDate()).padStart(2, "0");
@@ -143,7 +146,7 @@ async function totalAttendance() {
     });
 
     studentData[0].absent.forEach((e) => {
-      console.log(e);
+      // console.log(e);
       const isoDate = e;
       const date = new Date(isoDate);
       const day = String(date.getDate()).padStart(2, "0");
@@ -153,7 +156,63 @@ async function totalAttendance() {
 
       let d = document.getElementById(formattedDate);
       d.style.backgroundColor = "red";
-    });
+    });    
+    if (studentData[0].test) {
+      let s = '';
+      studentData[0].test.forEach((element) => {
+          // console.log(element);
+          let subjectsHtml = '';
+          let totalMarks = 0;
+          let totalOutOf = 0;
+  
+          // Generate HTML for all subjects under the same topic
+          element.outof.forEach((e) => {
+              console.log(e);
+              const marks = element.marks[e.subject];
+              const outOf = e.value;
+  
+              totalMarks += Number(marks);
+              totalOutOf += Number(outOf);
+  
+              // Check if marks are less than half of the outOf value
+              const markColor = marks < (outOf / 2) ? 'red' : 'black';  // red if less than half, black otherwise
+  
+              subjectsHtml += `
+                  <div>
+                      <p>Subject : ${(e.subject).toUpperCase()}</p>
+                      <p style="color: ${markColor};">Marks : ${marks}</p>
+                      <p>OutOf : ${outOf}</p>
+                  </div>`;
+          });
+  
+          // Calculate percentage
+          // console.log(totalMarks)
+          // console.log(totalOutOf)
+          const percentage = ((totalMarks / totalOutOf) * 100).toFixed(2);
+  
+          // Wrap subjects under a single topic
+          s += `
+          <div class="test-card">
+              <div>
+                  <h3>${(element.topic).toUpperCase()}</h3>
+              </div>
+              <div>
+                  ${subjectsHtml}
+              </div>
+              <div>
+                  <p>Percentage: <span>${percentage}%</span></p>
+              </div>
+          </div>`;
+      });
+  
+      // Inject the generated HTML into the DOM
+      const testContainer = document.getElementById('test');
+      testContainer.style.display = "flex";
+      testContainer.innerHTML = s;
+  }
+  
+  
+  
   } catch (error) {
     console.error("Error:", error);
   }

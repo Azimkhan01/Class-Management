@@ -1,6 +1,7 @@
 
 
 .container{
+    overflow-x: auto;
     margin-top: 2.5%;
     font-family: heebo,sans-serif;
     width: 100%;
@@ -92,6 +93,43 @@
     background-color: #005bb5;
     transform: scale(1.1); /* Slight zoom effect on hover */
     transition: all 0.2s ease-in-out;
+}
+
+
+#test {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* justify-content: ; */
+    padding: 20px;
+}
+.test-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+}
+.test-card h3 {
+    background-color: #005bb5;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+.test-card div {
+    padding: 15px;
+}
+.test-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+.test-card p span {
+    font-weight: bold;
+    color: #0071EA;
 }
 
 @media (max-width: 768px) {

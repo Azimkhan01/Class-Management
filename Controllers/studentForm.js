@@ -3,7 +3,7 @@ const {student , batch} = require('../Database/db')
 const studentForm = async(req, res) => {
   if (req.cookies.staff) {
   try{
-    const {studentName,studentAge,gender,studentClass,batchName,previousGrade,parentWhatsapp,parentEmail,studentWhatsapp} = req.body
+    const {note,studentName,studentAge,gender,studentClass,batchName,previousGrade,parentWhatsapp,parentEmail,studentWhatsapp} = req.body
     const studentId = async()=>{
      let count = await student.countDocuments({ batch: batchName });
      let batchData = await batch.find({batchName:batchName});
@@ -26,8 +26,10 @@ const studentForm = async(req, res) => {
          batch:batchName,
          image:req.file.filename,
          studentid: (await studentId()).toString(),
-         password: (await studentId()).toString()
+         password: (await studentId()).toString(),
+         note:note
  }); 
+//  console.log(addStudent)
     let addStudentToBatch = 
     await batch.updateOne(
         { batchName: batchName },

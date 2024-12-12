@@ -14,7 +14,7 @@ const handleAttendance = async (req, res) => {
                 batchName,
                 batchStandard
             });
-
+            console.log(absentStudents)
             if (batchAttendanceExists) {
                 const attendanceOnCurrentDate = batchAttendanceExists.attendance.some((element) => {
                     const elementDateString = new Date(element.date).toISOString().split('T')[0];
@@ -29,6 +29,7 @@ const handleAttendance = async (req, res) => {
             }
 
             // If attendance is not already recorded, proceed with updating the attendance
+            
             await student.updateMany(
                 { studentid: { $in: presentStudents } },
                 { $addToSet: { present: currentDate } }
