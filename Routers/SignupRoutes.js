@@ -26,6 +26,7 @@ const { markEntry } = require("../Controllers/markEntry");
 const { getStudentForTest } = require("../Controllers/getStudentForTest");
 const { enterMarks } = require("../Controllers/enterMarks");
 const { testById } = require("../Controllers/testById");
+const { updateStudent } = require("../Controllers/updateStudent");
 // Images
 
 const uploadStudentImage =  multer({ 
@@ -51,6 +52,7 @@ router.route("/getTests").get(getTests);
 router.route("/markEntry/:batch/:class/:topic").get(markEntry);
 router.route('/getStudentForTest').get(getStudentForTest);
 router.route("/testById/:id").get(testById);
+router.route("/updateStudent/:id?").get(updateStudent);
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);

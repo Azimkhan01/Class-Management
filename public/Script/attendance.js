@@ -21,7 +21,7 @@ async function batchBtn() {
             const { batchName, batchStandard } = element; 
             s += `
                 <button onclick="handleBatch('${batchName}', '${batchStandard}')">
-                    ${(batchName)} - ${(batchStandard)}
+                    ${(batchName).toUpperCase()} - ${(batchStandard)}
                 </button>
             `;
         });

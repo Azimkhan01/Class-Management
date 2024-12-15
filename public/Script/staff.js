@@ -90,7 +90,7 @@ function searchBoxUpdate(value, students) {
         <td>${student.class}</td>
         <td>${student.batch.toUpperCase()}</td>
         <td><button onclick="handleView('${student["_id"]}')">View</button></td>
-        <td><button>Update</button></td>
+        <td><button onclick='handleUpdate("${student['_id']}")'>Update</button></td>
       `;
       searchBody.appendChild(resultRow); // Append result row to tbody
     }
@@ -163,7 +163,7 @@ async function handleStudentBox(a, b) {
         <td>${student.class}</td>
         <td>${student.batch.toUpperCase()}</td>
         <td><button onclick="handleView('${student["_id"]}')">View</button></td>
-        <td><button>Update</button></td>
+        <td><button onclick='handleUpdate("${student['_id']}")'>Update</button></td>
       `;
       studentBody.appendChild(resultRow);
     });
@@ -299,5 +299,9 @@ navigationofAttendance.style.display = "none"
 
 }
 
+function handleUpdate()
+{
+  window.open(`${window.location.origin}/updateStudent`,"_blank")
+}
 
 

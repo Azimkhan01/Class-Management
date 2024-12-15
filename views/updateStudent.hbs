@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/CascadingStyle/updateStudent.css" />
+    <link rel="stylesheet" href="/public/CascadingStyle/staffNavbar.css" />
+</head>
+
+<body>
+    {{>staffNavbar}}
+    <div class="container">
+        <div class="form-header">
+            <h2>Update Student</h2>
+        </div>
+        <form action="/updateStudent" method="PUT">
+            <input type="hidden" name="_id" value="675b0899aad3b2531b2b2f20">
+            <input type="text" name="name" placeholder="Enter your name" value="azimuddeen khan" required />
+            <input type="text" name="studentWhatsapp" placeholder="Student WhatsApp" value="7678084267" required />
+            <input type="text" name="parentWhatsapp" placeholder="Parent WhatsApp" value="7678084267" required />
+            <input type="email" name="email" placeholder="Email" value="azimkarimrahim@gmail.com" required />
+            <select name="gender" required>
+                <option value="male" selected>Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <select name="class" required>
+                <option value="10" ${"12" === "10" ? "selected" : ""}>10</option>
+                <option value="11" ${"12" === "11" ? "selected" : ""}>11</option>
+                <option value="12" ${"12" === "12" ? "selected" : ""}>12</option>
+            </select>
+            <input type="number" name="age" placeholder="Age" value="12" required />
+            <select name="batch" required>
+                <option value="morning" ${"morning" === "morning" ? "selected" : ""}>Morning</option>
+                <option value="afternoon" ${"morning" === "afternoon" ? "selected" : ""}>Afternoon</option>
+                <option value="evening" ${"morning" === "evening" ? "selected" : ""}>Evening</option>
+            </select>
+            <input type="text" name="studentid" placeholder="Student ID" value="2490" required />
+            <input type="text" name="previousGrade" placeholder="Previous Grade" value="A+" required />
+            <button type="submit">Update Student</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/regular.min.js"
+        integrity="sha512-TjMd9u2haGIV8ZYBQDPyGJfei5Gc2U7iw1lnCu1Z2DHlTcirZ8c6nEvSixFDc3rRNQfSptbS7rF1m7bLf8wxbg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/Script/updateStudent.js"></script>
+    <script src="/public/Script/staffNavbar.js"></script>
+</body>
+
+</html>

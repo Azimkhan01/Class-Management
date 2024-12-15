@@ -9,6 +9,12 @@
     margin-top: 4%;
 }
 
+#batches{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px 10px;
+}
+
 #batches button {
     padding: 10px;
     background-color: #0061CA;
