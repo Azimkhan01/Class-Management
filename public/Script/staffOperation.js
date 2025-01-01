@@ -84,43 +84,101 @@ const teacherSubject = document.getElementById("teacherSubject");
 const teacherSubjectDiv = document.getElementById("teacherSubjectDiv");
 const teacherStandard = document.getElementById("teacherStandard");
 const teacherStandardInWhichTheyWillTeach = document.getElementById('teacherStandardInWhichTheyWillTeach')
+const selectedStandard = [];
+fetch(`${window.location.origin}/getBatches`).then(res => res.json()).then((data) => {
+  // console.log(data)
+  data.forEach((d) => {
+    let div = document.createElement('div');
+    let label = document.createElement('label');
+    label.textContent = d.batchName + '-' + d.batchStandard + ' ';
+    let input = document.createElement('input');
+    input.type = 'checkbox';
+    input.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        selectedStandard.push(d["_id"]);
+        // console.log(selectedStandard);
 
-const addInput = [teacherStandard, teacherSubject];
-addInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    // e.target.nextElementSibling.innerHTML = '';
-    let s = ''
-    for(i=0;i<e.target.value;i++){
-      s += `<input type="text" name="${e.target.name}-${i}" placeholder="Subject ${i+1}" required>`
-    }
-    e.target.nextElementSibling.innerHTML = s;
+      } else {
+        selectedStandard.splice(selectedStandard.indexOf(d["_id"]), 1)
+        // console.log(selectedStandard);
+      }
 
-  });
+    })
+    div.appendChild(label);
+    div.appendChild(input);
+    teacherStandardInWhichTheyWillTeach.appendChild(div);
+  })
+})
+
+
+teacherSubject.addEventListener("input", (e) => {
+  // e.target.nextElementSibling.innerHTML = '';
+  let s = ''
+  for (i = 0; i < e.target.value; i++) {
+    s += `<input class='classTeacherSelected' type="text" name="${e.target.name}-${i}" placeholder="Subject ${i + 1}" required>`
+  }
+  e.target.nextElementSibling.innerHTML = s;
+
 });
 const tfb = document.getElementById('teacher-form-button');
-const teacherForm  = document.getElementById('teacher-form');
+const teacherForm = document.getElementById('teacher-form');
 teacherForm.addEventListener('submit', (e) => {
+  // console.log('clicked')
   e.preventDefault();
   const formData = new FormData(teacherForm);
   const formObject = {};
   formData.forEach((value, key) => {
-    if(value == ''){
-    error.style.display = "flex";
-    errorMessage.innerHTML = "Please fill all the fields";
-    
-      tfb.disabled = true
-    }else
-    formObject[key] = value;
-    tfb.disabled = false
-  });
+    if (value == '') {
+      error.style.display = "flex";
+      errorMessage.innerHTML = "Please fill all the fields";
+      tfb.disabled = true;
+    } else {
+      formObject[key] = value;
+      tfb.disabled = false;
+    }
 
-}); 
+  });
+  // console.log(formObject);
+  // Convert teacherSubject to a number
+  let n = Number(formObject.teacherSubject);
+
+  // Extract last n entries
+  let lastNElements = Object.entries(formObject).slice(-n);
+
+  // Convert back to an object if needed
+  let lastNObject = Object.fromEntries(lastNElements);
+  let { teacherName, teacherShort, teacherSubject } = formObject;
+  if (tfb.disabled != true) {
+    try {
+      fetch(`${window.location.origin}/addTeacher`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({ subjects: lastNObject, teacherName, teacherShort, teacherSubject, teacherStandard: selectedStandard })
+      }).then(res => res.json()).then(data => {
+        if (data.error) {
+          error.style.display = "flex";
+          errorMessage.innerHTML = data.error;
+        }
+        else {
+          error.style.display = "flex";
+          errorMessage.innerHTML = data.status;
+        }
+      }
+      )
+    } catch (error) {
+      console.error('Network Error:', error)
+    }
+  }
+});
 const tfd = document.getElementById('teacher-form-div');
 const addTeacher = document.getElementById('addTeacher');
 let isformTeacher = false;
 addTeacher.addEventListener('click', () => {
- tfd.style.display = isformTeacher ? "none" : "block";
- tfb.style.display = isformTeacher ? "none" : "block";
+  tfd.style.display = isformTeacher ? "none" : "block";
+  tfb.style.display = isformTeacher ? "none" : "block";
   isformTeacher = !isformTeacher;
-  
 });
+
