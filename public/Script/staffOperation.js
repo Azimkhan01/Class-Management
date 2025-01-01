@@ -79,3 +79,48 @@ const removeError = document.getElementById("remove-error");
 removeError.addEventListener("click", (e) => {
   error.style.display = "none";
 });
+
+const teacherSubject = document.getElementById("teacherSubject");
+const teacherSubjectDiv = document.getElementById("teacherSubjectDiv");
+const teacherStandard = document.getElementById("teacherStandard");
+const teacherStandardInWhichTheyWillTeach = document.getElementById('teacherStandardInWhichTheyWillTeach')
+
+const addInput = [teacherStandard, teacherSubject];
+addInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    // e.target.nextElementSibling.innerHTML = '';
+    let s = ''
+    for(i=0;i<e.target.value;i++){
+      s += `<input type="text" name="${e.target.name}-${i}" placeholder="Subject ${i+1}" required>`
+    }
+    e.target.nextElementSibling.innerHTML = s;
+
+  });
+});
+const tfb = document.getElementById('teacher-form-button');
+const teacherForm  = document.getElementById('teacher-form');
+teacherForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(teacherForm);
+  const formObject = {};
+  formData.forEach((value, key) => {
+    if(value == ''){
+    error.style.display = "flex";
+    errorMessage.innerHTML = "Please fill all the fields";
+    
+      tfb.disabled = true
+    }else
+    formObject[key] = value;
+    tfb.disabled = false
+  });
+
+}); 
+const tfd = document.getElementById('teacher-form-div');
+const addTeacher = document.getElementById('addTeacher');
+let isformTeacher = false;
+addTeacher.addEventListener('click', () => {
+ tfd.style.display = isformTeacher ? "none" : "block";
+ tfb.style.display = isformTeacher ? "none" : "block";
+  isformTeacher = !isformTeacher;
+  
+});

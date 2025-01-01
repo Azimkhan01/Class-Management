@@ -35,7 +35,34 @@
                 <button id="showPassword" value="show Password">Show Password</button>
             </form>
         </div>
+         <div class="staffHandler">
+            <div>
+                <p>Add Teacher</p>
+            </div>
+            <div>
+                <button id="addTeacher">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div id="teacher-form-div" class="staffAddingForm">
+            <form id="teacher-form">
+                <input type="text" name="teacherName" id="teacherName" placeholder="Enter Teacher Name"/>
+                <input type="text" name="teacherShort" id="teacherShort" placeholder="Enter Teacher Short Form"/>
+                <input type="number" name="teacherSubject" id="teacherSubject" placeholder="Enter Total subject"/>
+                
+                <div id="teacherSubjectDiv">
+                </div>
+                <input type="number" name="teacherStandard" id="teacherStandard" placeholder="Enter class in which they will tech"/>
+               
+                <div id="teacherStandardInWhichTheyWillTeach">
+                </div>
+                </div>
+                <button id="teacher-form-button"  type="submit" >Submit</button>
+            </form>
+        </div>
     </div>
+    
     {{!-- error handling div not of any use at start becauise it not visible --}}
     <div id="error">
 <div class="info">

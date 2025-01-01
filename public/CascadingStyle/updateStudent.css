@@ -70,3 +70,90 @@ button:hover {
     }
 }
 
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the entire test form */
+#tests {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;  /* Adjust width as needed */
+}
+
+/* Topic Container Styling */
+.topic-container {
+    margin-bottom: 20px;
+}
+
+/* Styling for the topic name */
+.topic-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Container for the input fields */
+.inputs-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Input Item Styling (label + input) */
+.input-item {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    width: 120px;  /* Adjust the width as needed */
+}
+
+/* Styling for the input fields */
+input[type="number"] {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styling for the input labels */
+.input-item label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+    #tests {
+        width: 90%;
+    }
+
+    .topic-name {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    input[type="number"] {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .input-item {
+        width: 100px;
+    }
+}
+

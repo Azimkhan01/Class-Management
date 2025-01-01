@@ -299,9 +299,9 @@ navigationofAttendance.style.display = "none"
 
 }
 
-function handleUpdate()
+function handleUpdate(id)
 {
-  window.open(`${window.location.origin}/updateStudent`,"_blank")
+  window.open(`${window.location.origin}/updateStudent/${id}`,"_blank")
 }
 
 
