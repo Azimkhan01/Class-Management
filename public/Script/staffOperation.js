@@ -22,13 +22,11 @@ handleStaffDetails.addEventListener("submit", async (e) => {
     errorMessage.innerHTML = "Confirm Password and Password not Matched";
     return; // Stop the form submission if passwords don't match
   }
-
   const formData = new FormData(handleStaffDetails);
   const formObject = {};
   formData.forEach((value, key) => {
     formObject[key] = value;
   });
-
   try {
     let response = await fetch(`${window.location.origin}/addStaff`, {
       method: "POST",
@@ -37,7 +35,6 @@ handleStaffDetails.addEventListener("submit", async (e) => {
       },
       body: JSON.stringify(formObject),
     });
-
     if (response.ok) {
       const data = await response.json();
       // console.log(data)
@@ -56,7 +53,6 @@ handleStaffDetails.addEventListener("submit", async (e) => {
     console.error("Network error:", error);
   }
 });
-
 // password checking
 const confirmPassword = document.getElementById("confirmPassword");
 const password = document.getElementById("password");
@@ -72,14 +68,11 @@ showPassword.addEventListener("click", (e) => {
     e.target.textContent = "Show Password";
   }
 });
-
 //error handling div
-
 const removeError = document.getElementById("remove-error");
 removeError.addEventListener("click", (e) => {
   error.style.display = "none";
 });
-
 const teacherSubject = document.getElementById("teacherSubject");
 const teacherSubjectDiv = document.getElementById("teacherSubjectDiv");
 const teacherStandard = document.getElementById("teacherStandard");
@@ -97,12 +90,10 @@ fetch(`${window.location.origin}/getBatches`).then(res => res.json()).then((data
       if (e.target.checked) {
         selectedStandard.push(d["_id"]);
         // console.log(selectedStandard);
-
       } else {
         selectedStandard.splice(selectedStandard.indexOf(d["_id"]), 1)
         // console.log(selectedStandard);
       }
-
     })
     div.appendChild(label);
     div.appendChild(input);
@@ -182,3 +173,95 @@ addTeacher.addEventListener('click', () => {
   isformTeacher = !isformTeacher;
 });
 
+const showData = () => {
+  const ShowTeacher = document.getElementById('teachers')
+  try {
+
+    fetch(`${window.location.origin}/getTeacher`).then(res => res.json()).then((response) => {
+      let s = ''
+      let a = ''
+      let b = ''
+      if (response.status) {
+        response.data.forEach((e) => {
+          a = ''
+
+          Object.values(e.teacherSubject[0]).forEach((e) => {
+            a += ` <li>${e}</li>`
+          })
+
+
+          s += `
+       <div class="teacher-card">
+            <div class="teacher-card-info">
+                <p>Name : ${e.teacherName}</p>
+                <p>Short Name : ${e.teacherShort}</p>
+                <p>Total Subject : ${e.totalSubjects}</p>
+                <p>Total Standard : ${e.totalStandards}</p>
+            </div>
+            <div class="teacher-common teacher-subject">
+                <div>
+                    <h6>Subject</h6>
+                </div>
+                <div>
+                   ${a}
+                </div>
+            </div>
+            <div>
+               <div>
+               <button onClick="handleTeacherDelete('${e['_id']}')">Delete</button>
+               </div>
+
+            </div>
+        </div>
+      `
+        })
+        ShowTeacher.innerHTML = s
+      } else {
+        ShowTeacher.innerHTML = `<p>No Teacher is Added ${(response.message) ? response.message : ''}</p>`
+        throw Error(error.message)
+      }
+    })
+
+  } catch (error) {
+    console.log("Error Found in Showing the Teacher:", error)
+  }
+}
+
+const showTeac = document.getElementById('showStudent');
+const teachersElement = document.getElementById('teachers');
+let isShowTeacher = false;
+
+showTeac.addEventListener('click', () => {
+  if (isShowTeacher) {
+    teachersElement.style.display = 'none';
+  } else {
+    if (teachersElement.style.display === '' || teachersElement.style.display === 'none') {
+      teachersElement.style.display = 'flex';
+      showData();
+    } else {
+      showData(); // Assuming this function is defined elsewhere
+    }
+  }
+  isShowTeacher = !isShowTeacher; // Toggle the state
+});
+
+
+// teacher delete function
+function handleTeacherDelete(id) {
+
+  try {
+    fetch(`${window.origin}/deleteTeacher/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json()).then((res) => {
+      console.log(res);
+      if (res.status) { showData() }
+      else { throw Error(res.message) }
+    })
+  } catch (error) {
+    console.log("Error happen why deleting the Teacher data:>", error)
+  }
+
+}

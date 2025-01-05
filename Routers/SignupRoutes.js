@@ -27,7 +27,7 @@ const { getStudentForTest } = require("../Controllers/getStudentForTest");
 const { enterMarks } = require("../Controllers/enterMarks");
 const { testById } = require("../Controllers/testById");
 const { updateStudent, updateStudentData } = require("../Controllers/updateStudent");
-const { handleTeacher } = require("../Controllers/teacher");
+const { handleTeacher, getTeacher, deleteTeacher } = require("../Controllers/teacher");
 // Images
 
 const uploadStudentImage =  multer({ 
@@ -54,6 +54,7 @@ router.route("/markEntry/:batch/:class/:topic").get(markEntry);
 router.route('/getStudentForTest').get(getStudentForTest);
 router.route("/testById/:id").get(testById);
 router.route("/updateStudent/:id").get(updateStudent);
+router.route('/getTeacher').get(getTeacher);
 //post request
 router.route("/addStaff").post(addStaff)
 router.route("/student-login").post(studentLogin);
@@ -67,4 +68,8 @@ router.route('/addMarks').post(addMarks);
 router.route('/enterMarks').post(enterMarks);
 router.route('/updateStudent').post(updateStudentData);
 router.route('/addTeacher').post(handleTeacher);
+
+// delete route here
+router.route('/deleteTeacher/:id').delete(deleteTeacher)
+
 module.exports = { router };
