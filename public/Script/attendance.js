@@ -4,7 +4,7 @@ async function batchBtn() {
     try {
         batches.innerHTML = '<p>Loading batches...</p>';
         const response = await fetch(`${window.location.origin}/getBatches`);
-        
+
         if (!response.ok) {
             throw new Error(`Failed to fetch batches: ${response.statusText}`);
         }
@@ -18,7 +18,7 @@ async function batchBtn() {
         }
         let s = '';
         data.forEach(element => {
-            const { batchName, batchStandard } = element; 
+            const { batchName, batchStandard } = element;
             s += `
                 <button onclick="handleBatch('${batchName}', '${batchStandard}')">
                     ${(batchName).toUpperCase()} - ${(batchStandard)}
@@ -33,9 +33,7 @@ async function batchBtn() {
     }
 }
 
-function handleBatch(batchName, batchStandard) {
-    alert(`You clicked on: ${batchName} - ${batchStandard}`);
-}
+
 
 batchBtn();
 
@@ -44,16 +42,22 @@ const present = [];
 const absent = [];
 
 async function handleBatch(batchName, batchStandard) {
+    present.splice(0, present.length);
+    absent.splice(0, absent.length)
+
     try {
         // Ensure batchStandard is treated as a number
         const response = await fetch(`${window.location.origin}/getStudents?batch=${encodeURIComponent(batchName)}&class=${batchStandard}`);
-        
+
         if (!response.ok) {
             throw new Error(`Failed to fetch students: ${response.statusText}`);
         }
 
         const students = await response.json();
-
+        localStorage.clear();
+        localStorage.setItem('attendanceInfo', JSON.stringify({
+            total: students.length
+        }));
         const attendanceTable = document.getElementById('attendanceTable');
         attendanceTable.innerHTML = `
             <thead>
@@ -77,7 +81,7 @@ async function handleBatch(batchName, batchStandard) {
         `;
 
         // Add a submit button after generating the table rows
-        
+
         attendanceTable.innerHTML += `
             <button onClick="submitAttendance('${batchName}', '${batchStandard}')" class="submit">Submit</button><div id="pat"></div>
         `;
@@ -107,19 +111,19 @@ function markAttendance(studentId, status) {
             present.splice(index, 1);
         }
     }
-const pat = document.getElementById('pat')
-pat.innerHTML = `<strong>Present:${present.length} + absent:${absent.length} = Total:${present.length + absent.length}</strong>`
+    const pat = document.getElementById('pat')
+    pat.innerHTML = `<strong>Present:${present.length} + absent:${absent.length} = Total:${present.length + absent.length}</strong>`
     // console.log('Present:', present);
     // console.log('Absent:', absent);
 }
 
 // Submit the attendance data
-function submitAttendance(batchName, batchStandard) {
-    // console.log('Submitting attendance for batch:', batchName, 'Standard:', batchStandard);
-    // console.log('Present Students:', present);
-    // console.log('Absent Students:', absent);
-    // alert('Attendance submitted successfully!');
-}
+// function submitAttendance(batchName, batchStandard) {
+// console.log('Submitting attendance for batch:', batchName, 'Standard:', batchStandard);
+// console.log('Present Students:', present);
+// console.log('Absent Students:', absent);
+// alert('Attendance submitted successfully!');
+// }
 
 
 // function markAttendance(studentId, status) {
@@ -145,56 +149,66 @@ function submitAttendance(batchName, batchStandard) {
 //     // console.log('Absent:', absent);
 // }
 
-function submitAttendance() {
-    // console.log("Submitting Attendance...");
-    // console.log("Present Students:", present);
-    // console.log("Absent Students:", absent);
+// function submitAttendance() {
+// console.log("Submitting Attendance...");
+// console.log("Present Students:", present);
+// console.log("Absent Students:", absent);
 
-    // Mock API call to submit attendance
-    fetch(`${window.location.origin}/submitAttendance`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ present, absent }),
-    })
-        .then(response => {
-            if (response.ok) {
-                alert('Attendance submitted successfully!');
-                present.length = 0; // Clear the arrays after submission
-                absent.length = 0;
-            } else {
-                throw new Error(`Failed to submit attendance: ${response.statusText}`);
-            }
-        })
-        .catch(error => {
-            console.error('Error submitting attendance:', error);
-            alert('Failed to submit attendance. Please try again.');
-        });
-}
+// Mock API call to submit attendance
+//     fetch(`${window.location.origin}/submitAttendance`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ present, absent }),
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 alert('Attendance submitted successfully!');
+//                 present.length = 0; // Clear the arrays after submission
+//                 absent.length = 0;
+//             } else {
+//                 throw new Error(`Failed to submit attendance: ${response.statusText}`);
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error submitting attendance:', error);
+//             alert('Failed to submit attendance. Please try again.');
+//         });
+// }
 
 //submity atterndacne
 async function submitAttendance(batchName, batchStandard) {
-    try {
-        const data = {
-            batchName: batchName,
-            batchStandard: batchStandard,
-            presentStudents: present,
-            absentStudents: absent
-        };
-        const response = await fetch(`${window.location.origin}/handleAttendance`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to submit attendance: ${response.statusText}`);
+    console.log(JSON.parse(localStorage.getItem("attendanceInfo")).total)
+    console.log(present.length + absent.length)
+    if (JSON.parse(localStorage.getItem("attendanceInfo")).total == (present.length + absent.length)) {
+        try {
+            const data = {
+                batchName: batchName,
+                batchStandard: batchStandard,
+                presentStudents: present,
+                absentStudents: absent
+            };
+            const response = await fetch(`${window.location.origin}/handleAttendance`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to submit attendance: ${response.statusText}`);
+            }
+            const responseData = await response.json();
+            // console.log(responseData);
+            alert('Attendance submitted successfully!');
+        } catch (error) {
+            console.error('Error submitting attendance:', error);
+            alert('Failed to submit attendance. Please try again.');
         }
-        const responseData = await response.json();
-        // console.log(responseData);
-        alert('Attendance submitted successfully!');
-    } catch (error) {
-        console.error('Error submitting attendance:', error);
-        alert('Failed to submit attendance. Please try again.');
+
+
+    }
+    else {
+        alert("Some Student Attendance are remaining please check it properly")
+        return
     }
 }

@@ -176,13 +176,35 @@ async function loadBatches() {
        let option = `<option value="" disabled selected>Select Batch</option>`
         let option2 = `<option value="" disabled selected>Select Class</option>`
        const studentClass = document.getElementById("studentClass")
+       const f = []
       batches.forEach((element)=>{
-        option += `<option value="${element.batchName}">${element.batchName}</option>`
-        option2 +=`<option value="${element.batchStandard}">${element.batchStandard}</option>`
+        // option += `<option value="${element.batchName}">${element.batchName}</option>`
+       if(!f.includes(element.batchName))
+       {
+          // console.log("redundant option removed")
+           f.push(element.batchName)
+         option2 +=`<option value="${element.batchStandard}">${element.batchStandard}</option>`
+       }
       });
       batch.innerHTML = option
       studentClass.innerHTML = option2
-      
+      batch.disabled = true
+      studentClass.addEventListener("change",(e)=>{
+        batch.disabled = false
+        let temp = '';
+        batches.forEach((z)=>{
+
+          if(z.batchStandard == e.target.value )
+          {
+            // console.log(z.batchName)
+            // console.log("founded")
+            temp +=  `<option value="${z.batchName}">${z.batchName}</option>`
+            
+          }
+          
+          batch.innerHTML = option+ temp
+        })
+      })
      
     } else {
       TotalBatches.innerHTML = "<p>No batches found</p>"; // Display a message if no batches are found

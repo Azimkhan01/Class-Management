@@ -114,6 +114,8 @@ async function studentBathcButton() {
   try {
     let response = await fetch(`${window.location.origin}/getBatches`);
     let batches = await response.json();
+   if(batches.length > 0)
+   {
     let s = "";
     batches.forEach(element => {
       s += ` <button onClick="handleStudentBox('${element.batchStandard}','${element.batchName}')">${element.batchName.toUpperCase()} - ${element.batchStandard} - ${element.batchYear}</button>`;
@@ -135,8 +137,11 @@ async function studentBathcButton() {
       }
       
     });
+   }else{
+    console.log(batches.message)
+   }
   } catch (error) {
-    alert("the error is :", alert);
+    console.log("the error is :", error);
   }
 }
 

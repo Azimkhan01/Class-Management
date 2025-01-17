@@ -12,7 +12,7 @@ const getBatches = async (req, res) => {
         if (batches.length > 0) {
             return res.json(batches);
         } else {
-            return res.status(404).json({ error: "No batches found" });
+            return res.status(201).json({ "message" : "The batch is not added yet please add the batch" });
         }
     } catch (error) {
         console.error("Error fetching batches:", error);
