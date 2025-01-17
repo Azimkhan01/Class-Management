@@ -2,7 +2,7 @@ Here is the reformatted content with proper headings and subheadings:
 
 # Class Management
 
-### Navbar
+##Navbar
 
 # Mobile
 ![mobile_navbar](https://github.com/user-attachments/assets/a10cbaf9-e001-40f2-b3db-7d98a179dc61)
@@ -10,13 +10,13 @@ Here is the reformatted content with proper headings and subheadings:
 ## Login
 ![login](https://github.com/user-attachments/assets/39c832c3-98a2-4957-9db3-99516ce91a6b)
 
-### Mobile 
+## Mobile 
 ![mobile_login](https://github.com/user-attachments/assets/442208c8-5e34-470d-b24a-6ebfa567336a)
 
-## Staff Home Page
+##Staff Home Page
 ![staff_page](https://github.com/user-attachments/assets/e7f2bd7e-5156-4e1d-a2cd-819c44819c9e)
 
-### Mobile
+## Mobile
 ![mobile_staff_page](https://github.com/user-attachments/assets/86b1f965-0c84-4e4d-a45a-5e6080764656)
 
 ## Staff Searching Component
@@ -44,13 +44,13 @@ Here is the reformatted content with proper headings and subheadings:
 ## Student Page in Role of Staff (as Admin)
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/30f2f900-f7cd-4b8c-964a-b9875d910f19)
 
-### Mobile
+## Mobile
 ![mobile_version](https://github.com/user-attachments/assets/aab714de-fb45-4cec-bb1e-d5e3487ec8b1)
 
 ## Staff Adding Teacher Page
 ![image](https://github.com/user-attachments/assets/f7c530aa-3962-4484-856e-a9db39a8a484)
 
-### Mobile
+## Mobile
 ![mobile_staff](https://github.com/user-attachments/assets/085e9a5b-d605-49ed-9d3e-c4b5b4d1545a)
 ![mobile_staff_teachers](https://github.com/user-attachments/assets/0184f172-7bca-4241-bfa3-f5590ed5aec3)
 
@@ -58,5 +58,5 @@ Here is the reformatted content with proper headings and subheadings:
 ![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/fe8ef588-ccca-4016-8d40-50eee2196f8c)
 ![attendance](https://github.com/user-attachments/assets/f4812cf0-8b8c-4fb7-a6fd-151d5394a1e4)
 
-### Mobile
+## Mobile
 ![mobile_attendance](https://github.com/user-attachments/assets/61e17620-598b-47f5-8b8b-f5884c1bee21)
