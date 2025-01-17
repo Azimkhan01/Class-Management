@@ -1,7 +1,7 @@
 const { test, batch } = require("../Database/db");
 
 const addTestSheet = async (req, res) => {
-    console.log('Request received at addTestSheet');
+    // console.log('Request received at addTestSheet');
 
     if (!req.cookies.staff) {
         return res.status(401).json({ status: "error", message: "Unauthorized: Staff not logged in." });

@@ -122,10 +122,7 @@ async function studentBathcButton() {
     });
     studentBatch.innerHTML = s;
     batches.forEach(element => {
-      let option = document.createElement("option")
-      option.value = element.batchName
-      option.innerText = (element.batchName).toUpperCase();
-      batchSelect.appendChild(option);
+     
 
       if(!std.has(element.batchStandard))
       {
@@ -137,6 +134,27 @@ async function studentBathcButton() {
       }
       
     });
+    batchSelect.disabled = true
+    classSelect.addEventListener("change",(e)=>{
+      batchSelect.innerHTML = ''
+      let s  = ''
+      batches.forEach((z)=>{
+        
+        if(e.target.value == z.batchStandard)
+          {
+//  let option = document.createElement("option")
+//       option.value = z.batchName
+//       option.innerText = (z.batchName).toUpperCase();
+      // batchSelect.appendChild(option);
+            // console.log("founded")
+            s+= `<option value='${z.batchName}' >${z.batchName.toUpperCase()}</option>`
+            // batchSelect.appendChild(option)
+          }
+      })
+      let defOption = '<option selected disabled  >Select Batch</option>'
+      batchSelect.innerHTML =defOption +  s
+      batchSelect.disabled = false
+    })
    }else{
     console.log(batches.message)
    }
